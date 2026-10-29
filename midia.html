@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vídeos e podcasts, Rafael Zigart</title>
+<meta name="description" content="Vídeos e participações em podcasts de Rafael Zigart sobre produto, design e carreira.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Geist:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<header class="nav proof">
+    <div class="container">
+      <a class="wordmark" href="index.html" aria-label="Rafael Zigart, início">Rafael Zigart</a>
+      <div class="nav__right">
+        <nav aria-label="Principal">
+          <ul class="nav__links"><li><a href="index.html#trajetoria">Trajetória</a></li><li><a href="blog/">Blog</a></li><li><a href="midia.html" aria-current="page">Vídeos e podcasts</a></li></ul>
+        </nav>
+        <a class="btn crop" href="contato.html">Falar comigo</a>
+      </div>
+    </div>
+  </header>
+
+<main id="main">
+  <section class="page-hero proof" aria-labelledby="page-title">
+    <div class="container">
+      <h1 id="page-title">Vídeos e podcasts.</h1>
+      <p class="lead">Conversas sobre IA, produto e design.</p>
+    </div>
+  </section>
+
+  <section class="section section--s" id="cel-agents" aria-labelledby="pod-title">
+    <div class="container feature">
+      <a class="feature__media crop" href="https://www.youtube.com/watch?v=ND6KEQ3miMg" aria-label="Assistir ao episódio 1 de cel_agents no YouTube">
+        <span class="thumb" data-slot="ep1" data-kind="product" data-alt="Miniatura do episódio 1 de cel_agents">
+          <img src="https://i.ytimg.com/vi/ND6KEQ3miMg/hqdefault.jpg" width="480" height="360" alt="" fetchpriority="high">
+          <span class="thumb__fallback" aria-hidden="true">cel_agents<small>Episódio 1</small></span>
+        </span>
+      </a>
+      <div class="feature__text">
+        <h2 id="pod-title">cel_agents.</h2>
+        <p class="lead">A série “A nova fronteira da IA no setor financeiro”, da Celcoin, com Adriano Meirinho.</p>
+        <ol class="set episodes">
+          <li class="ep"><span class="ep__n">Episódio 1</span><a class="ep__title" href="https://www.youtube.com/watch?v=ND6KEQ3miMg">O que muda quando a IA entra na construção de produtos financeiros</a><span class="ep__state">No ar</span></li>
+          <li class="ep"><span class="ep__n">Próximo</span><span class="ep__title ep__title--soon">Em breve</span></li>
+          <li class="ep"><span class="ep__n">Próximo</span><span class="ep__title ep__title--soon">Em breve</span></li>
+        </ol>
+        <p class="feature__note">Da documentação técnica à integração entre Produto, Design e Engenharia: como a IA encurta o caminho da ideia ao produto testável.</p>
+        <div class="actions">
+          <a class="btn btn--primary crop" href="https://www.youtube.com/watch?v=ND6KEQ3miMg">Assistir no YouTube</a>
+          <a class="link" href="https://celcoin.ai">Conhecer o cel_agents</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--s band" id="videos" aria-labelledby="videos-title">
+    <div class="container">
+      <div class="head"><h2 id="videos-title">Outros vídeos.</h2></div>
+      <ul class="media-grid" data-list="videos">
+        <li class="video crop"><a href="https://www.youtube.com/watch?v=jSzlJsVl3vE"><span class="thumb" data-slot="video-1" data-kind="product" data-alt="Miniatura do vídeo"><img src="https://i.ytimg.com/vi/jSzlJsVl3vE/hqdefault.jpg" width="480" height="360" alt="" loading="lazy"><span class="thumb__fallback" aria-hidden="true">YouTube</span></span><span class="video__title"><span class="fill" data-fill="titulo-video">título do vídeo</span></span></a></li>
+        <!-- Novo vídeo: copie a linha acima e troque o código depois de v= e em /vi/ -->
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="footer proof">
+  <div class="container">
+    <p class="footer__line">Para convidar para um vídeo ou podcast, use a página de contato.</p>
+    <div class="footer__row">
+      <ul><li><a href="index.html">Início</a></li><li><a href="blog/">Blog</a></li><li><a href="midia.html">Vídeos e podcasts</a></li><li><a href="contato.html">Contato</a></li></ul>
+      <p>© 2026 Rafael Zigart</p>
+    </div>
+  </div>
+</footer>
+<script>document.querySelectorAll('[data-slot] img').forEach((i) => { if (i.complete && !i.naturalWidth) i.remove(); else i.addEventListener('error', () => i.remove(), { once: true }); });</script>
+</body>
+</html>
