@@ -480,3 +480,25 @@ a.post__cover:hover { transform: translateY(-3px); }
 @media (max-width: 60rem) { .js .chapter:not(.is-current) .more { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .more[open] .more__body { animation: none; } .more__label::before, .more__label::after { transition: none; } }
 .more:not([open]) > .more__body { display: none; }
+
+/* Home: the career in one line per role */
+.summary > li { border-bottom: var(--rule-hair) solid var(--color-rule); }
+.sum { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); align-items: baseline; padding-block: var(--space-lg); color: var(--color-ink); text-decoration: none; transition: background-color var(--dur-short) var(--ease-out); }
+.sum__years { grid-column: 1 / 3; font-size: var(--text-sm); font-weight: 500; color: var(--color-muted); font-variant-numeric: tabular-nums; transition: color var(--dur-short) var(--ease-out); }
+.sum__role { grid-column: 3 / 9; font: 400 var(--text-title)/1.15 var(--font-display); letter-spacing: -0.005em; transition: transform var(--dur-short) var(--ease-out); }
+.sum__org { grid-column: 9 / 12; color: var(--color-ink-2); }
+.sum__go { grid-column: 12 / 13; justify-self: end; font: 400 var(--text-title)/1 var(--font-display); color: var(--color-muted); transition: transform var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+.sum:hover { background: var(--color-paper-2); }
+.sum:hover .sum__role { transform: translateX(6px); }
+.sum:hover .sum__go { transform: rotate(90deg); color: var(--color-accent); }
+.sum:hover .sum__years { color: var(--color-ink); }
+.sum:active .sum__role { transform: translateX(3px); }
+.sum:focus-visible { outline: 2px solid var(--color-focus); outline-offset: -2px; }
+.summary__more { margin-top: var(--space-2xl); }
+.chapter { scroll-margin-top: var(--space-2xl); }
+@media (max-width: 60rem) {
+  .sum { grid-template-columns: minmax(0, 1fr); row-gap: var(--space-2xs); }
+  .sum > * { grid-column: 1 / -1 !important; }
+  .sum__go { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .sum, .sum__role, .sum__go, .sum__years { transition: none; } .sum:hover .sum__role, .sum:hover .sum__go { transform: none; } }
