@@ -4,6 +4,7 @@
 /* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: S, a head about twelve years fits other careers; the name drawn on its own font metrics and the Shell Box case opened in place carry the specificity */
 /* Hallmark · dismissed 58 · the 88 words at y 1200 are the index rows, years and company names read as a list, not running copy */
 /* Hallmark · waive 77 · midia lists are empty until the YouTube and podcast links arrive · midia, contato and blog are inner pages of the Rafael Zigart site, filled one line per video or episode */
+/* Hallmark · dismissed 25 · .words__text is a one-sentence statement at section size, not running prose; 28ch keeps it to four lines */
 @import url("./tokens.css");
 @import url("./base.css");
 
@@ -60,7 +61,7 @@
 /* Hero: the name under construction */
 .hero { min-height: calc(100dvh - var(--nav-h)); display: flex; }
 .hero .container { display: flex; flex-direction: column; justify-content: space-between; gap: var(--space-xl); padding-block: var(--space-md) var(--space-2xl); }
-.readline { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-md); padding-bottom: var(--space-sm); border-bottom: var(--rule-hair) solid var(--color-ink-2); font-size: var(--text-xs); font-weight: 500; color: var(--color-muted); }
+.readline { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: center; gap: var(--space-md); padding-bottom: var(--space-sm); border-bottom: var(--rule-hair) solid var(--color-ink-2); font-size: var(--text-xs); font-weight: 500; color: var(--color-muted); }
 .readline span:nth-child(2) { text-align: center; }
 .readline span:last-child { text-align: end; }
 .construct { position: relative; margin: 0; font-size: var(--text-mark); }
@@ -356,3 +357,33 @@ html:not(.js) .measure-toggle, html:not(.js) .marquee__toggle { display: none; }
   .js #trajetoria .set::after { display: none; }
   .set > li.is-current .row__role { transform: none; }
 }
+
+/* Now: the latest episode and post */
+.now__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap-columns); align-items: stretch; }
+.now__card { display: grid; align-content: start; gap: var(--space-sm); padding: var(--space-lg); background: var(--color-paper-hi); border-radius: var(--radius-card); box-shadow: var(--shadow-sheet); color: var(--color-ink); text-decoration: none; transition: transform var(--dur-short) var(--ease-out); --o: 12px; --l: 9px; }
+.now__card--ep { grid-column: 1 / 8; }
+.now__card--post { grid-column: 8 / 13; align-content: end; min-height: 320px; }
+.now__card .thumb { margin-bottom: var(--space-sm); }
+.now__meta { font-size: var(--text-sm); font-weight: 500; color: var(--color-muted); }
+.now__title { font: 400 var(--text-title)/1.2 var(--font-display); max-width: 30ch; }
+.now__title--l { font-size: var(--text-section); line-height: 1.04; letter-spacing: var(--tracking-display); }
+.now__line { color: var(--color-ink-2); }
+.now__go { margin-top: var(--space-xs); font-weight: 500; text-decoration: underline var(--rule-hair); text-underline-offset: 0.3em; }
+.now__card:hover { transform: translateY(-4px); }
+.now__card:hover .now__go { text-decoration-color: var(--color-accent); }
+.now__card:hover::before { transform: scale(1.02); }
+.now__card:active { transform: translateY(-1px); }
+.now__card:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 4px; }
+
+/* A sentence that lights up as you read down */
+.words__text { grid-column: 1 / -1; max-width: 28ch; font: 400 var(--text-section)/1.12 var(--font-display); letter-spacing: var(--tracking-display); color: var(--color-ink); }
+.js .words__text .w { color: color-mix(in oklab, var(--color-ink) 22%, var(--color-paper-2)); transition: color 300ms var(--ease-out); }
+.js .words__text .w.is-lit { color: var(--color-ink); }
+
+/* Living dot grid: a canvas replaces the CSS dots where script runs */
+.has-dots { position: relative; background-image: var(--grain); background-size: 160px 160px; }
+.has-dots > canvas.dots { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.has-dots > :not(canvas) { position: relative; z-index: 1; }
+
+@media (max-width: 60rem) { .now__card--ep, .now__card--post { grid-column: 1 / -1; } .now__card--post { min-height: 0; } }
+@media (prefers-reduced-motion: reduce) { .now__card { transition: none; } .now__card:hover { transform: none; } .js .words__text .w { transition: none; } }

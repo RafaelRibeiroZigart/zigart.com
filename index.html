@@ -81,6 +81,29 @@
     </div>
   </section>
 
+  <section class="section section--s now" id="agora" aria-labelledby="now-title">
+    <div class="container">
+      <div class="head"><h2 id="now-title">Agora.</h2></div>
+      <div class="now__grid">
+        <a class="now__card now__card--ep crop" href="https://www.youtube.com/watch?v=ND6KEQ3miMg">
+          <span class="thumb" data-slot="now-ep" data-kind="product" data-alt="Miniatura do episódio 1 de cel_agents">
+            <img src="https://i.ytimg.com/vi/ND6KEQ3miMg/hqdefault.jpg" width="480" height="360" alt="" loading="lazy">
+            <span class="thumb__fallback" aria-hidden="true">cel_agents<small>Episódio 1</small></span>
+          </span>
+          <span class="now__meta">Podcast cel_agents, episódio 1</span>
+          <span class="now__title">O que muda quando a IA entra na construção de produtos financeiros</span>
+          <span class="now__go">Assistir no YouTube</span>
+        </a>
+        <a class="now__card now__card--post crop" href="blog/ia-na-construcao-de-produtos-financeiros.html">
+          <span class="now__meta">No blog</span>
+          <span class="now__title now__title--l">O que muda quando a IA entra na construção de produtos.</span>
+          <span class="now__line">A conversa com Adriano Meirinho, em texto.</span>
+          <span class="now__go">Ler o post</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="trajetoria" aria-labelledby="career-title">
     <div class="container">
       <div class="head">
@@ -139,8 +162,8 @@
 
   <section class="section section--s" id="o-que-faco" aria-labelledby="do-title">
     <div class="container">
-      <div class="head">
-        <h2 id="do-title">O que eu faço hoje.</h2>
+      <div class="head words">
+        <h2 id="do-title" class="words__text" data-words>Meus diferenciais são planejamento e estratégia, comunicação, agilidade, marketing e design, para chegar a resultados de forma assertiva.</h2>
       </div>
       <ul class="cards">
         <li class="card crop"><h3>Product marketing</h3><p>Go-to-market, posicionamento, pitch decks e comunicação de produto.</p></li>
@@ -189,5 +212,6 @@
     </div>
   </div>
 </footer>
+<script>document.querySelectorAll('[data-slot] img').forEach((i) => { if (i.complete && !i.naturalWidth) i.remove(); else i.addEventListener('error', () => i.remove(), { once: true }); });</script>
 </body>
 </html>
