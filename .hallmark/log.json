@@ -1,0 +1,54 @@
+[
+ {
+  "shape": "Index that opens (from Long Document)",
+  "theme": "studio",
+  "axes": "light/roman-serif/cool",
+  "hero": "Ledge",
+  "nav": "edge-aligned",
+  "footer": "statement",
+  "imagery": "none",
+  "photos": [],
+  "entry": "wordmark construction",
+  "fingerprint": "index-opens/ledge/construction",
+  "sections": [
+   "Hero (name under construction)",
+   "Index that opens (Shell Box case open)",
+   "Grid (4 printed cards)",
+   "Table (formação)",
+   "Contact",
+   "Footer statement"
+  ],
+  "signature": "the name under construction on real Hedvig metrics",
+  "waived": [],
+  "prompt": "quero o design Studio",
+  "date": "2026-10-29",
+  "mode": "build"
+ },
+ {
+  "shape": "Index-First",
+  "theme": "grid",
+  "axes": "light/grotesk-sans/cool",
+  "hero": "Ledge",
+  "nav": "masthead",
+  "footer": "index columns",
+  "imagery": "none",
+  "photos": [],
+  "entry": "overprint head",
+  "fingerprint": "index-first/ledge/specimen-years",
+  "sections": [
+   "Hero (overprint, 12+)",
+   "Split (Shell Box case)",
+   "Switcher (years specimen)",
+   "Rows (o que faço)",
+   "Statement (Clube Binário, field)",
+   "Table (formação)",
+   "Contact (red field)",
+   "Footer"
+  ],
+  "signature": "career as a specimen of years",
+  "waived": [],
+  "prompt": "quero criar uma LP moderna sobre mim.",
+  "date": "2026-10-29",
+  "mode": "build"
+ }
+]

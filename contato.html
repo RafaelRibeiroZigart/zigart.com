@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contato, Rafael Zigart</title>
+<meta name="description" content="Fale com Rafael Zigart sobre produto, design, go-to-market, palestras e podcasts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Geist:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<header class="nav proof">
+    <div class="container">
+      <a class="wordmark" href="index.html" aria-label="Rafael Zigart, início">Rafael Zigart</a>
+      <div class="nav__right">
+        <nav aria-label="Principal">
+          <ul class="nav__links"><li><a href="index.html#trajetoria">Trajetória</a></li><li><a href="blog/">Blog</a></li><li><a href="midia.html">Vídeos e podcasts</a></li></ul>
+        </nav>
+        <a class="btn crop" href="contato.html" aria-current="page">Falar comigo</a>
+      </div>
+    </div>
+  </header>
+
+<main id="main">
+  <section class="page-hero proof" aria-labelledby="page-title">
+    <div class="container">
+      <h1 id="page-title">Vamos falar do seu produto.</h1>
+      <p class="lead">Consultoria, design, go-to-market ou um convite para conversar.</p>
+    </div>
+  </section>
+
+  <section class="section section--s">
+    <div class="container contact-page">
+      <form class="form" data-endpoint="" novalidate>
+        <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
+        <fieldset class="seg"><legend>Assunto</legend>
+          <input type="radio" name="assunto" id="a1" value="consultoria" checked><label for="a1">Consultoria</label>
+          <input type="radio" name="assunto" id="a2" value="convite"><label for="a2">Palestra ou podcast</label>
+          <input type="radio" name="assunto" id="a3" value="vaga"><label for="a3">Vaga</label>
+          <input type="radio" name="assunto" id="a4" value="outro"><label for="a4">Outro</label>
+        </fieldset>
+        <div class="field"><label for="msg">Mensagem</label><textarea id="msg" name="mensagem" rows="6" required></textarea></div>
+        <div class="form__foot">
+          <button class="btn btn--primary crop" type="submit">Enviar mensagem</button>
+          <p class="form__help" id="form-help" aria-live="polite"></p>
+        </div>
+      </form>
+      <dl class="contact-page__list">
+        <div><dt>Email</dt><dd><span class="fill" data-fill="email">seu email aqui</span></dd></div>
+        <div><dt>LinkedIn</dt><dd><span class="fill" data-fill="linkedin">link do perfil</span></dd></div>
+        <div><dt>Base</dt><dd>Barueri, São Paulo</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="footer proof">
+  <div class="container">
+    <p class="footer__line">Respondo pelo email, normalmente em poucos dias.</p>
+    <div class="footer__row">
+      <ul><li><a href="index.html">Início</a></li><li><a href="blog/">Blog</a></li><li><a href="midia.html">Vídeos e podcasts</a></li><li><a href="contato.html">Contato</a></li></ul>
+      <p>© 2026 Rafael Zigart</p>
+    </div>
+  </div>
+</footer>
+<script>
+document.querySelectorAll('form[data-endpoint]').forEach((form) => {
+  const help = form.querySelector('[aria-live]');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const bad = [...form.querySelectorAll('input[required], textarea[required]')].filter((i) => { const ok = i.checkValidity(); i.toggleAttribute('aria-invalid', !ok); return !ok; });
+    if (bad.length) { help.textContent = bad[0].type === 'email' ? 'Esse email parece incompleto. Escreva como nome@exemplo.com.' : 'Preencha nome, email e mensagem.'; bad[0].focus(); return; }
+    if (!form.dataset.endpoint) { help.textContent = 'Nada foi enviado: este formulário ainda não está conectado. Use o email ao lado.'; return; }
+    const btn = form.querySelector('button[type=submit]'); btn.setAttribute('aria-busy', 'true');
+    fetch(form.dataset.endpoint, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+      .then((r) => { help.textContent = r.ok ? 'Mensagem enviada. Respondo pelo email que você deixou.' : 'Não foi possível enviar. Tente de novo em um minuto.'; })
+      .catch(() => { help.textContent = 'Não foi possível enviar. Tente de novo em um minuto.'; })
+      .finally(() => btn.removeAttribute('aria-busy'));
+  });
+});
+</script>
+</body>
+</html>
