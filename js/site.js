@@ -3,7 +3,7 @@
 
   // One reveal: blocks below the first screen rise in once as they enter.
   if (!reduce && 'IntersectionObserver' in window) {
-    const sel = '.head, .set > li, .cards > li, .about__photo, .about__text, .table, .contact, .feature__media, .feature__text, .media-grid > li, .contact-page > *, .article__body > *';
+    const sel = '.head, .set > li, .cards > li, .now__card, .about__photo, .about__text, .table, .contact, .feature__media, .feature__text, .media-grid > li, .contact-page > *, .article__body > *';
     const els = [...document.querySelectorAll(sel)].filter((el) => el.getBoundingClientRect().top > innerHeight * 0.92);
     const io = new IntersectionObserver((es) => es.forEach((e) => {
       if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
@@ -73,19 +73,35 @@
     if ('IntersectionObserver' in window) new IntersectionObserver(([e]) => { s.seen = e.isIntersecting; sync(); }).observe(el);
   });
 
-  // The career index: an orange line fills as you read down it, and the row at the middle of the screen leans in.
-  const set = document.querySelector('#trajetoria .set');
-  if (set && !reduce) {
-    const rows = [...set.children];
-    let ticking = false;
+  // The career as chapters: the pinned panel follows the chapter at the middle of the screen.
+  const chapters = [...document.querySelectorAll('.chapter')];
+  if (chapters.length) {
+    const pin = document.querySelector('.pin');
+    const map = pin ? [...pin.querySelectorAll('.pin__map li')] : [];
+    const list = document.querySelector('.career__chapters');
+    let cur = -1, ticking = false, swapT = 0;
+    const set = (i) => {
+      if (i === cur) return;
+      cur = i;
+      chapters.forEach((c, k) => c.classList.toggle('is-current', k === i));
+      map.forEach((m, k) => m.classList.toggle('is-current', k === i));
+      if (!pin || i < 0) return;
+      const c = chapters[i];
+      const fill = () => { ['years', 'org', 'role'].forEach((k) => { pin.querySelector('[data-pin="' + k + '"]').textContent = c.dataset[k]; }); pin.classList.remove('is-swapping'); };
+      if (reduce) { fill(); return; }
+      pin.classList.add('is-swapping'); clearTimeout(swapT); swapT = setTimeout(fill, 180);
+    };
     const update = () => {
       ticking = false;
-      const r = set.getBoundingClientRect(), mid = innerHeight * 0.55;
-      const p = Math.min(1, Math.max(0, (mid - r.top) / r.height));
-      set.style.setProperty('--p', p.toFixed(4));
-      let cur = null;
-      rows.forEach((li) => { const b = li.getBoundingClientRect(); if (b.top <= mid && b.bottom > mid) cur = li; });
-      rows.forEach((li) => li.classList.toggle('is-current', li === cur));
+      const mid = innerHeight * 0.5;
+      let found = -1;
+      chapters.forEach((c, k) => { const b = c.getBoundingClientRect(); if (b.top <= mid && b.bottom > mid) found = k; });
+      if (found < 0) { const first = chapters[0].getBoundingClientRect(); found = first.top > mid ? 0 : chapters.length - 1; }
+      set(found);
+      if (list && pin) {
+        const r = list.getBoundingClientRect();
+        pin.querySelector('.pin__map').style.setProperty('--p', Math.min(1, Math.max(0, (mid - r.top) / r.height)).toFixed(4));
+      }
     };
     addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
     addEventListener('resize', update, { passive: true });
