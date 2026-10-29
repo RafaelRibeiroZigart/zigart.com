@@ -234,6 +234,8 @@
 .feature__text { grid-column: 8 / 13; display: grid; gap: var(--space-lg); justify-items: start; }
 .feature__text .lead { color: var(--color-ink-2); }
 .episodes { width: 100%; }
+.feature__note { color: var(--color-ink-2); max-width: 52ch; }
+.feature__text .actions { align-items: center; }
 .ep { display: grid; grid-template-columns: 7rem minmax(0, 1fr) auto; gap: var(--space-md); align-items: baseline; padding-block: var(--space-md); }
 .ep__n, .ep__state { font-size: var(--text-sm); font-weight: 500; color: var(--color-muted); }
 .ep__title { font: 400 var(--text-lg)/1.25 var(--font-display); color: var(--color-ink); text-decoration: none; }
