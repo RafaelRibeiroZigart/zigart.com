@@ -29,31 +29,38 @@
   <section class="page-hero proof" aria-labelledby="page-title">
     <div class="container">
       <h1 id="page-title">Vídeos e podcasts.</h1>
-      <p class="lead">Onde falei sobre produto, design e carreira.</p>
+      <p class="lead">Episódios e vídeos em que falo de produto e design.</p>
     </div>
   </section>
 
-  <section class="section section--s" id="videos" aria-labelledby="videos-title">
+  <section class="section section--s" id="cel-agents" aria-labelledby="pod-title">
+    <div class="container feature">
+      <a class="feature__media crop" href="https://www.youtube.com/watch?v=ND6KEQ3miMg" aria-label="Assistir ao episódio 1 de cel_agents no YouTube">
+        <span class="thumb" data-slot="ep1" data-kind="product" data-alt="Miniatura do episódio 1 de cel_agents">
+          <img src="https://i.ytimg.com/vi/ND6KEQ3miMg/hqdefault.jpg" width="480" height="360" alt="" fetchpriority="high">
+          <span class="thumb__fallback" aria-hidden="true">cel_agents<small>Episódio 1</small></span>
+        </span>
+      </a>
+      <div class="feature__text">
+        <h2 id="pod-title">cel_agents.</h2>
+        <p class="lead">Podcast em três episódios. O primeiro já está no ar.</p>
+        <ol class="set episodes">
+          <li class="ep"><span class="ep__n">Episódio 1</span><a class="ep__title" href="https://www.youtube.com/watch?v=ND6KEQ3miMg"><span class="fill" data-fill="titulo-ep1">título do episódio</span></a><span class="ep__state">No ar</span></li>
+          <li class="ep"><span class="ep__n">Episódio 2</span><span class="ep__title ep__title--soon">Em breve</span></li>
+          <li class="ep"><span class="ep__n">Episódio 3</span><span class="ep__title ep__title--soon">Em breve</span></li>
+        </ol>
+        <a class="btn btn--primary crop" href="https://www.youtube.com/watch?v=ND6KEQ3miMg">Assistir no YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--s band" id="videos" aria-labelledby="videos-title">
     <div class="container">
-      <div class="head"><h2 id="videos-title">No YouTube.</h2></div>
+      <div class="head"><h2 id="videos-title">Outros vídeos.</h2></div>
       <ul class="media-grid" data-list="videos">
-        <!-- Um vídeo por item: troque VIDEO_ID pelo código do link (youtube.com/watch?v=VIDEO_ID).
-        <li class="video crop"><a href="https://www.youtube.com/watch?v=VIDEO_ID"><img src="https://i.ytimg.com/vi/VIDEO_ID/hqdefault.jpg" width="480" height="360" alt="" loading="lazy"><span class="video__title">Título do vídeo</span></a></li>
-        -->
+        <li class="video crop"><a href="https://www.youtube.com/watch?v=jSzlJsVl3vE"><span class="thumb" data-slot="video-1" data-kind="product" data-alt="Miniatura do vídeo"><img src="https://i.ytimg.com/vi/jSzlJsVl3vE/hqdefault.jpg" width="480" height="360" alt="" loading="lazy"><span class="thumb__fallback" aria-hidden="true">YouTube</span></span><span class="video__title"><span class="fill" data-fill="titulo-video">título do vídeo</span></span></a></li>
+        <!-- Novo vídeo: copie a linha acima e troque o código depois de v= e em /vi/ -->
       </ul>
-      <p class="media-empty">Os vídeos do canal entram aqui: <span class="fill" data-fill="youtube">links dos vídeos</span></p>
-    </div>
-  </section>
-
-  <section class="section section--s band" id="podcasts" aria-labelledby="pod-title">
-    <div class="container">
-      <div class="head"><h2 id="pod-title">Em podcasts.</h2></div>
-      <ul class="set" data-list="podcasts">
-        <!-- Um episódio por item:
-        <li class="episode"><span class="episode__show">Nome do podcast</span><a class="episode__title" href="LINK_DO_EPISODIO">Título do episódio</a><span class="episode__date">Mês de ano</span></li>
-        -->
-      </ul>
-      <p class="media-empty">O episódio em que participei entra aqui: <span class="fill" data-fill="podcast">nome e link do episódio</span></p>
     </div>
   </section>
 </main>
@@ -67,5 +74,6 @@
     </div>
   </div>
 </footer>
+<script>document.querySelectorAll('[data-slot] img').forEach((i) => { if (i.complete && !i.naturalWidth) i.remove(); else i.addEventListener('error', () => i.remove(), { once: true }); });</script>
 </body>
 </html>
