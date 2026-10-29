@@ -5,6 +5,7 @@
 /* Hallmark · dismissed 58 · the 88 words at y 1200 are the index rows, years and company names read as a list, not running copy */
 /* Hallmark · waive 77 · midia lists are empty until the YouTube and podcast links arrive · midia, contato and blog are inner pages of the Rafael Zigart site, filled one line per video or episode */
 /* Hallmark · dismissed 25 · .words__text is a one-sentence statement at section size, not running prose; 28ch keeps it to four lines */
+/* Hallmark · dismissed F7 · every printed piece is the same paper sheet by the Studio theme rule: one shadow, for paper objects only */
 @import url("./tokens.css");
 @import url("./base.css");
 
@@ -455,3 +456,27 @@ a.post__cover:hover { transform: translateY(-3px); }
 .now__cover { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius-card); margin-bottom: var(--space-sm); outline: 1px solid color-mix(in oklab, var(--color-ink) 8%, transparent); outline-offset: -1px; }
 .now__card--post .now__title--l { font-size: var(--text-title); line-height: 1.2; letter-spacing: -0.005em; }
 .now__card--post { align-content: start; }
+
+/* Everything I did: a disclosure under each chapter */
+.more { margin-top: var(--space-xs); border-top: var(--rule-hair) solid var(--color-rule); }
+.more summary { display: flex; align-items: center; justify-content: space-between; gap: var(--space-md); min-height: 52px; cursor: pointer; list-style: none; }
+.more summary::-webkit-details-marker { display: none; }
+.more__label { position: relative; padding-left: var(--space-lg); font-weight: 500; color: var(--color-ink); }
+.more__label::before, .more__label::after { content: ""; position: absolute; left: 0; top: 50%; width: 12px; height: 1px; background: var(--color-accent); transition: transform var(--dur-short) var(--ease-out); }
+.more__label::after { transform: rotate(90deg); }
+.more[open] .more__label::after { transform: rotate(0deg); }
+.more__n { font-size: var(--text-sm); color: var(--color-muted); font-variant-numeric: tabular-nums; }
+.more summary:hover .more__label { text-decoration: underline var(--rule-hair) var(--color-accent); text-underline-offset: 0.3em; }
+.more summary:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.more__body { display: grid; gap: var(--space-md); padding: var(--space-lg); margin-bottom: var(--space-sm); background: var(--color-paper-hi); border-radius: var(--radius-card); box-shadow: var(--shadow-sheet); }
+.more[open] .more__body { animation: rise 380ms var(--ease-out) both; }
+.more__h { font: 400 var(--text-lg)/1.2 var(--font-display); color: var(--color-ink); }
+.more__h:not(:first-child) { margin-top: var(--space-sm); }
+.more__list { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-sm); }
+.more__list li { position: relative; padding-left: var(--space-lg); color: var(--color-ink-2); line-height: 1.5; }
+.more__list li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 7px; height: 7px; background: var(--color-accent); border-radius: 1px; }
+.js .chapter:not(.is-current) .more { opacity: 0.35; transition: opacity 500ms var(--ease-out); }
+.js .chapter.is-current .more, .js .chapter .more[open] { opacity: 1; }
+@media (max-width: 60rem) { .js .chapter:not(.is-current) .more { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .more[open] .more__body { animation: none; } .more__label::before, .more__label::after { transition: none; } }
+.more:not([open]) > .more__body { display: none; }
