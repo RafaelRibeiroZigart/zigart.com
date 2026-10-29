@@ -11,6 +11,7 @@ Site pessoal de Rafael Zigart. HTML e CSS estáticos, sem build: abra `index.htm
 
 ## Como adicionar conteúdo
 
+- **Post do blog:** copie `blog/ia-na-construcao-de-produtos-financeiros.html` com um novo nome, troque título, data e texto, e adicione um item no topo da lista em `blog/index.html`.
 - **Vídeo:** em `midia.html`, copie o modelo comentado dentro de `data-list="videos"` e troque `VIDEO_ID` pelo código do link do YouTube. Depois apague o parágrafo `media-empty` da seção.
 - **Episódio de podcast:** mesmo processo em `data-list="podcasts"`.
 - **Email e LinkedIn:** troque os trechos `<span class="fill" ...>` em `index.html` e `contato.html`.
