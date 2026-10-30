@@ -533,3 +533,14 @@ html.is-entering body { overflow: hidden; }
   .js .about__photo[data-reveal] .photo { clip-path: none; transition: none; }
   .btn--primary { translate: none; }
 }
+
+/* Series list under the feature */
+.episodes--full { grid-column: 1 / -1; margin-top: var(--space-2xl); }
+.episodes--full .ep { grid-template-columns: 9rem minmax(0, 1fr); padding-block: var(--space-lg); }
+.ep__main { display: grid; gap: var(--space-2xs); }
+.ep__guest { font-size: var(--text-sm); font-weight: 500; color: var(--color-ink-2); }
+.ep__line { color: var(--color-ink-2); max-width: 64ch; }
+.video__line { color: var(--color-ink-2); }
+.video a { gap: var(--space-xs); }
+.chapter__video { justify-self: start; }
+@media (max-width: 60rem) { .episodes--full .ep { grid-template-columns: minmax(0, 1fr); } }
