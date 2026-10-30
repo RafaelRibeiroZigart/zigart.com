@@ -187,3 +187,87 @@
     });
   }
 })();
+
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const d = document.documentElement;
+
+  // Page transitions: a proof sheet carries the next page's name across the screen.
+  const names = { 'index.html': 'Início', '': 'Início', 'carreira.html': 'Carreira', 'midia.html': 'Vídeos e podcasts', 'contato.html': 'Contato' };
+  const nameFor = (a) => {
+    if (a.dataset.curtain) return a.dataset.curtain;
+    const u = new URL(a.href, location.href);
+    const file = u.pathname.split('/').pop();
+    if (u.pathname.includes('/blog/')) return file === '' || file === 'index.html' ? 'Blog' : 'Blog';
+    return names[file] || a.textContent.trim().slice(0, 40);
+  };
+  const reveal = () => {
+    if (!d.classList.contains('is-entering')) return;
+    requestAnimationFrame(() => d.classList.add('is-revealing'));
+    setTimeout(() => d.classList.remove('is-entering', 'is-revealing'), 900);
+  };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => setTimeout(reveal, 120)); else setTimeout(reveal, 200);
+  addEventListener('pageshow', (e) => { if (e.persisted) { d.classList.remove('is-entering', 'is-revealing'); document.querySelectorAll('.curtain').forEach((c) => c.remove()); } });
+
+  if (!reduce) {
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[href]');
+      if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target === '_blank' || a.hasAttribute('download')) return;
+      const u = new URL(a.href, location.href);
+      if (u.origin !== location.origin || u.protocol === 'mailto:' || (u.pathname === location.pathname && u.hash)) return;
+      e.preventDefault();
+      const name = nameFor(a);
+      try { sessionStorage.setItem('zc', name); } catch (err) {}
+      const c = document.createElement('div');
+      c.className = 'curtain'; c.setAttribute('aria-hidden', 'true');
+      c.innerHTML = '<span class="curtain__name"></span>';
+      c.firstChild.textContent = name;
+      document.body.append(c);
+      requestAnimationFrame(() => requestAnimationFrame(() => c.classList.add('is-in')));
+      let gone = false;
+      const go = () => { if (!gone) { gone = true; location.href = a.href; } };
+      c.addEventListener('transitionend', go, { once: true });
+      setTimeout(go, 650);
+    });
+  }
+
+  if (reduce || !('IntersectionObserver' in window)) return;
+
+  // Headings: each word rises out of its own mask when the heading enters.
+  const heads = [...document.querySelectorAll('h1, h2')].filter((h) => !h.classList.contains('visually-hidden') && !h.classList.contains('words__text') && !h.children.length && !h.closest('.construct'));
+  const hio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('is-up'); hio.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
+  heads.forEach((h) => {
+    const words = h.textContent.trim().split(/\s+/);
+    h.setAttribute('aria-label', h.textContent.trim());
+    h.innerHTML = words.map((w, i) => '<span class="wr" aria-hidden="true"><span class="wr__i" style="--k:' + i + '">' + w.replace(/</g, '&lt;') + '</span></span>').join(' ');
+    h.classList.add('split');
+    const delay = d.classList.contains('is-entering') ? 500 : 0;
+    setTimeout(() => hio.observe(h), delay);
+  });
+
+  // Figures count up from zero once.
+  const nums = [...document.querySelectorAll('.fig--nums dt, .fig__num .fig__big')];
+  const nio = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return;
+    nio.unobserve(e.target);
+    const el = e.target, final = el.textContent, m = final.match(/^(\d+)(.*)$/);
+    if (!m) return;
+    const to = +m[1], rest = m[2], t0 = performance.now(), dur = 1100;
+    const tick = (now) => { const k = Math.min(1, (now - t0) / dur), v = Math.round(to * (1 - Math.pow(1 - k, 3))); el.textContent = v + rest; if (k < 1) requestAnimationFrame(tick); else el.textContent = final; };
+    el.setAttribute('aria-label', final);
+    requestAnimationFrame(tick);
+  }), { threshold: 0.6 });
+  nums.forEach((n) => nio.observe(n));
+
+  // The primary action leans toward the pointer.
+  if (matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.btn--primary').forEach((b) => {
+      b.addEventListener('pointermove', (e) => {
+        const r = b.getBoundingClientRect();
+        b.style.setProperty('--mx', ((e.clientX - r.left - r.width / 2) * 0.18).toFixed(1) + 'px');
+        b.style.setProperty('--my', ((e.clientY - r.top - r.height / 2) * 0.3).toFixed(1) + 'px');
+      });
+      b.addEventListener('pointerleave', () => { b.style.setProperty('--mx', '0px'); b.style.setProperty('--my', '0px'); });
+    });
+  }
+})();

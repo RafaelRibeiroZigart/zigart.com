@@ -6,6 +6,7 @@
 /* Hallmark · waive 77 · midia lists are empty until the YouTube and podcast links arrive · midia, contato and blog are inner pages of the Rafael Zigart site, filled one line per video or episode */
 /* Hallmark · dismissed 25 · .words__text is a one-sentence statement at section size, not running prose; 28ch keeps it to four lines */
 /* Hallmark · dismissed F7 · every printed piece is the same paper sheet by the Studio theme rule: one shadow, for paper objects only */
+/* Hallmark · dismissed 23 · the curtain accent is a 1px baseline rule drawn by a gradient sized 100% x 1px, not a fill */
 @import url("./tokens.css");
 @import url("./base.css");
 
@@ -502,3 +503,33 @@ a.post__cover:hover { transform: translateY(-3px); }
   .sum__go { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .sum, .sum__role, .sum__go, .sum__years { transition: none; } .sum:hover .sum__role, .sum:hover .sum__go { transform: none; } }
+
+/* Page transitions: the proof sheet with the next page's name */
+.curtain, html.is-entering::after { position: fixed; inset: 0; z-index: var(--z-toast); display: grid; place-items: center; padding-inline: var(--gutter); background-color: var(--color-paper); --cf: clamp(3rem, 10vw, 8rem);
+  background-image: linear-gradient(var(--color-accent), var(--color-accent)), radial-gradient(circle at 1px 1px, var(--color-dot) 1px, transparent 1.4px);
+  background-size: 100% 1px, 24px 24px; background-repeat: no-repeat, repeat; background-position: 0 calc(50% + 0.35 * var(--cf)), 0 0;
+  font: 400 var(--cf)/1 var(--font-display); letter-spacing: var(--tracking-display); color: var(--color-ink); text-align: center; pointer-events: none; }
+.curtain { transform: translateY(100%); transition: transform 560ms cubic-bezier(0.76, 0, 0.24, 1); }
+.curtain.is-in { transform: none; }
+html.is-entering::after { content: attr(data-curtain); transition: transform 760ms cubic-bezier(0.76, 0, 0.24, 1); }
+html.is-entering.is-revealing::after { transform: translateY(-100%); }
+html.is-entering body { overflow: hidden; }
+
+/* Headings rise word by word */
+.wr { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.14em; margin-bottom: -0.14em; }
+.js .split .wr__i { display: inline-block; transform: translateY(110%); transition: transform 800ms cubic-bezier(0.16, 1, 0.3, 1); transition-delay: calc(var(--k, 0) * 55ms); }
+.js .split.is-up .wr__i { transform: none; }
+
+/* The photograph is uncovered from the bottom */
+.js .about__photo[data-reveal] .photo { clip-path: inset(100% 0 0 0); transition: clip-path 1100ms cubic-bezier(0.16, 1, 0.3, 1) 120ms; }
+.js .about__photo[data-reveal].is-in .photo { clip-path: inset(0 0 0 0); }
+
+/* Primary actions lean toward the pointer */
+.btn--primary { translate: var(--mx, 0px) var(--my, 0px); transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out), translate 260ms var(--ease-out); }
+
+@media (prefers-reduced-motion: reduce) {
+  .curtain, html.is-entering::after { display: none; }
+  .js .split .wr__i { transform: none; transition: none; }
+  .js .about__photo[data-reveal] .photo { clip-path: none; transition: none; }
+  .btn--primary { translate: none; }
+}
