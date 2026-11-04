@@ -30,11 +30,9 @@
     "slug": "og-mizoor",
     "date": "Desde 2019",
     "kicker": "Fundado por Rafael Zigart",
-    "title": "Mizoor: esporte com companhia.",
-    "size": 72,
+    "title": "Mizoor: esporte com lugar, horário e pessoas.",
+    "size": 86,
     "section": "Projeto",
-    "tilt": 2,
-    "image": "images/mizoor-prototipo.png",
-    "imageWidth": 470
+    "tilt": 2
   }
 ]
