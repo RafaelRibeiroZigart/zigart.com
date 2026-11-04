@@ -1,10 +1,18 @@
 [
   {
+    "slug": "produto-design-engenharia-mesma-definicao",
+    "date": "Outubro de 2026",
+    "kicker": "Podcast cel_agents, episódio 3",
+    "title": "A velocidade vem de conectar as etapas.",
+    "size": 88,
+    "tilt": 2.5
+  },
+  {
     "slug": "ia-na-construcao-de-produtos-financeiros",
     "date": "Outubro de 2026",
     "kicker": "Podcast cel_agents, episódio 1",
-    "title": "O que muda quando a IA entra na construção de produtos.",
-    "size": 80,
+    "title": "Da intenção ao produto real.",
+    "size": 96,
     "tilt": -3
   },
   {
