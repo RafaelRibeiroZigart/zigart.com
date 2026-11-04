@@ -36,7 +36,7 @@ h1 { margin: 0; max-width: 15ch; font: 400 ${'${size}'}px/1.1 var(--font-display
     linear-gradient(var(--m), var(--m)) 100% calc(100% - var(--o)) / var(--l) 1px no-repeat, linear-gradient(var(--m), var(--m)) calc(100% - var(--o)) 100% / 1px var(--l) no-repeat; }
 </style></head><body>
 <div class="cover"><i class="crop"></i>${p.mark ? `<span class="mark">${p.mark}</span>` : ''}
-  <div class="read"><span>Blog</span><span>${p.date}</span></div>
+  <div class="read"><span>${p.section || 'Blog'}</span><span>${p.date}</span></div>
   <div class="sheet"><div class="kicker">${p.kicker}</div><h1>${p.title}</h1></div>
   <div class="foot"><b>Rafael Zigart</b><span>zigart.com</span></div>
 </div></body></html>`.replace('${size}', String(p.size || 104));

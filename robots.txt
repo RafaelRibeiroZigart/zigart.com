@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rafaelribeirozigart.github.io/zigart.com/sitemap.xml
