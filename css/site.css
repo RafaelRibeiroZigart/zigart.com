@@ -714,3 +714,21 @@ html.is-entering::after { content: attr(data-curtain); background: var(--pixel-1
 }
 @media (max-width: 40rem) { .mzx-steps, .mzx-origin__figs { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .mzx-steps li::before, .mzx-steps li::after, .mzx-tour__tabs button { transition: none; } .js .mzx-tour__stage .shot:not([hidden]) { animation: none; } }
+
+/* Mizoor in pixels */
+:root { --mz-pix-1: oklch(33% 0.06 160); --mz-pix-2: oklch(45% 0.09 152); --mz-pix-3: oklch(62% 0.13 138); --font-pixel: var(--font-outlier); }
+.mzx-hero { position: relative; padding-bottom: calc(var(--space-3xl) + 120px); }
+.mzx-hero > .container { position: relative; z-index: 1; }
+.mzx-scene { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 168px; z-index: 0; pointer-events: none; }
+.mzx-band { position: relative; }
+.mzx-band::before, .mzx-band::after { content: ""; position: absolute; left: 0; right: 0; height: 12px; background: linear-gradient(90deg, var(--mz-tint) 50%, transparent 0) 0 0 / 24px 12px repeat-x; pointer-events: none; }
+.mzx-band::before { top: -12px; }
+.mzx-band::after { bottom: -12px; background-position: 12px 0; }
+.mzx-fronts__n { font-family: var(--font-pixel); font-size: var(--text-section); letter-spacing: 0; }
+.mzx-steps li::before { border-radius: 2px; font-family: var(--font-pixel); font-size: var(--text-md); box-shadow: 4px 4px 0 var(--mz-pix-3); }
+.mzx-steps.is-armed li::before { box-shadow: none; }
+.mzx-steps.is-armed li.is-on::before { box-shadow: 4px 4px 0 var(--mz-pix-3); }
+.mzx-steps li::after { height: 4px; background: repeating-linear-gradient(90deg, var(--mz-green) 0 8px, transparent 8px 12px); }
+.mzx-plans__free { box-shadow: 6px 6px 0 var(--mz-lime) !important; }
+.mzx-plans__price { font-family: var(--font-display); }
+.mzx-meta, .mzx-plans__who { font-family: var(--font-pixel); font-size: var(--text-xs); }
