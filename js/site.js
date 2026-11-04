@@ -133,6 +133,7 @@
     const ink = getComputedStyle(probe).color;
     probe.style.color = 'var(--color-accent)';
     const accent = getComputedStyle(probe).color;
+    const pal = ['--pixel-1', '--pixel-2', '--pixel-3', '--pixel-4'].map((v) => { probe.style.color = 'var(' + v + ')'; return getComputedStyle(probe).color; });
     probe.remove();
     const pointer = { x: -9999, y: -9999, at: 0 };
     const move = (e) => { pointer.x = e.clientX; pointer.y = e.clientY; pointer.at = performance.now(); };
@@ -169,9 +170,15 @@
               const ddx = x - px, ddy = y - py, d = Math.hypot(ddx, ddy);
               if (d < R) { k = 1 - d / R; const push = k * k * 9; dx += (ddx / (d || 1)) * push; dy += (ddy / (d || 1)) * push; rad += k * 1.8; }
             }
-            ctx.globalAlpha = k > 0.05 ? 0.25 + k * 0.6 : 0.2;
-            ctx.fillStyle = k > 0.05 ? accent : ink;
-            ctx.beginPath(); ctx.arc(x + dx, y + dy, rad, 0, 6.2832); ctx.fill();
+            if (k > 0.05) {
+              const sq = 4 + k * 12, h = ((x * 73856093) ^ (y * 19349663)) >>> 0;
+              ctx.globalAlpha = 0.35 + k * 0.65;
+              ctx.fillStyle = pal[h % pal.length];
+              ctx.fillRect(Math.round(x + dx - sq / 2), Math.round(y + dy - sq / 2), Math.round(sq), Math.round(sq));
+            } else {
+              ctx.globalAlpha = 0.2; ctx.fillStyle = ink;
+              ctx.beginPath(); ctx.arc(x + dx, y + dy, rad, 0, 6.2832); ctx.fill();
+            }
           }
         }
         if (wave || near) raf = requestAnimationFrame(draw);
@@ -201,13 +208,33 @@
     if (u.pathname.includes('/blog/')) return file === '' || file === 'index.html' ? 'Blog' : 'Blog';
     return names[file] || a.textContent.trim().slice(0, 40);
   };
+  // The transition is made of the portrait's pixels: they fill the screen, name the next page, then dissolve.
+  const PXC = 28;
+  const palette = () => { const p = document.createElement('span'); document.body.append(p); const out = ['--pixel-1', '--pixel-2', '--pixel-3', '--pixel-4'].map((v) => { p.style.color = 'var(' + v + ')'; return getComputedStyle(p).color; }); p.style.color = 'var(--color-paper)'; out.paper = getComputedStyle(p).color; p.remove(); return out; };
+  const mosaic = (name) => {
+    const cv = document.createElement('canvas'); cv.className = 'pixel-curtain'; cv.setAttribute('aria-hidden', 'true');
+    const dpr = Math.min(2, devicePixelRatio || 1), W = innerWidth, H = innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr; document.body.append(cv);
+    const ctx = cv.getContext('2d'); ctx.scale(dpr, dpr);
+    const pal = palette(), cols = Math.ceil(W / PXC), rows = Math.ceil(H / PXC), cells = [];
+    for (let y = 0; y < rows; y++) for (let x = 0; x < cols; x++) cells.push({ x, y, c: pal[(Math.random() * 4) | 0], o: Math.random() });
+    cells.sort((p, q) => p.o - q.o);
+    const fs = Math.max(48, Math.min(128, W * 0.1));
+    const drawName = (alpha) => { if (!name) return; ctx.globalAlpha = alpha; ctx.fillStyle = pal.paper; ctx.font = '400 ' + fs + 'px "Hedvig Letters Serif", Georgia, serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(name, W / 2, H / 2); ctx.globalAlpha = 1; };
+    const paint = (n) => { ctx.clearRect(0, 0, W, H); for (let i = 0; i < n; i++) { const c = cells[i]; ctx.fillStyle = c.c; ctx.fillRect(c.x * PXC, c.y * PXC, PXC + 0.5, PXC + 0.5); } };
+    return { cv, cells, paint, drawName };
+  };
   const reveal = () => {
     if (!d.classList.contains('is-entering')) return;
-    requestAnimationFrame(() => d.classList.add('is-revealing'));
-    setTimeout(() => d.classList.remove('is-entering', 'is-revealing'), 900);
+    const name = d.getAttribute('data-curtain') || '';
+    const m = mosaic(name); m.paint(m.cells.length); m.drawName(1);
+    d.classList.remove('is-entering', 'is-revealing');
+    const t0 = performance.now(), dur = 620;
+    const step = (now) => { const k = Math.min(1, (now - t0) / dur), left = Math.round(m.cells.length * (1 - k * k)); m.paint(left); m.drawName(Math.max(0, 1 - k * 2.2)); if (k < 1) requestAnimationFrame(step); else m.cv.remove(); };
+    requestAnimationFrame(step);
   };
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => setTimeout(reveal, 120)); else setTimeout(reveal, 200);
-  addEventListener('pageshow', (e) => { if (e.persisted) { d.classList.remove('is-entering', 'is-revealing'); document.querySelectorAll('.curtain').forEach((c) => c.remove()); } });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => setTimeout(reveal, 60)); else setTimeout(reveal, 120);
+  addEventListener('pageshow', (e) => { if (e.persisted) { d.classList.remove('is-entering', 'is-revealing'); document.querySelectorAll('.curtain, .pixel-curtain').forEach((c) => c.remove()); } });
 
   if (!reduce) {
     document.addEventListener('click', (e) => {
@@ -218,16 +245,13 @@
       e.preventDefault();
       const name = nameFor(a);
       try { sessionStorage.setItem('zc', name); } catch (err) {}
-      const c = document.createElement('div');
-      c.className = 'curtain'; c.setAttribute('aria-hidden', 'true');
-      c.innerHTML = '<span class="curtain__name"></span>';
-      c.firstChild.textContent = name;
-      document.body.append(c);
-      requestAnimationFrame(() => requestAnimationFrame(() => c.classList.add('is-in')));
+      const m = mosaic(name);
+      const t0 = performance.now(), dur = 480;
       let gone = false;
       const go = () => { if (!gone) { gone = true; location.href = a.href; } };
-      c.addEventListener('transitionend', go, { once: true });
-      setTimeout(go, 650);
+      const step = (now) => { const k = Math.min(1, (now - t0) / dur); m.paint(Math.round(m.cells.length * Math.sqrt(k))); if (k > 0.55) m.drawName((k - 0.55) / 0.45); if (k < 1) requestAnimationFrame(step); else setTimeout(go, 120); };
+      requestAnimationFrame(step);
+      setTimeout(go, 1200);
     });
   }
 
