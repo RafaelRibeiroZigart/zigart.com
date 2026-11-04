@@ -13,5 +13,22 @@
     "kicker": "Clube Binário, ONG Projeto Emanuel",
     "title": "O quanto a programação ajuda no desenvolvimento infantil?",
     "size": 92
+  },
+  {
+    "slug": "og-site",
+    "date": "Produto, IA e design",
+    "kicker": "Head de AI Product na Celcoin",
+    "title": "Rafael Zigart",
+    "size": 150,
+    "mark": "",
+    "section": "Site pessoal"
+  },
+  {
+    "slug": "og-mizoor",
+    "date": "Desde 2019",
+    "kicker": "Fundado por Rafael Zigart",
+    "title": "Mizoor: esporte com companhia.",
+    "size": 110,
+    "section": "Projeto"
   }
 ]

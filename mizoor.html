@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mizoor, um projeto de Rafael Zigart</title>
+<meta name="description" content="Mizoor, o app fundado por Rafael Zigart para conectar quem quer praticar esporte coletivo e encontrar lugares para jogar: problema, personas, MVP, protótipo e plano.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://rafaelribeirozigart.github.io/zigart.com/mizoor.html">
+<meta name="author" content="Rafael Zigart">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rafael Zigart">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Mizoor, um projeto de Rafael Zigart">
+<meta property="og:description" content="Mizoor, o app fundado por Rafael Zigart para conectar quem quer praticar esporte coletivo e encontrar lugares para jogar: problema, personas, MVP, protótipo e plano.">
+<meta property="og:url" content="https://rafaelribeirozigart.github.io/zigart.com/mizoor.html">
+<meta property="og:image" content="https://rafaelribeirozigart.github.io/zigart.com/images/blog/og-mizoor.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Mizoor", "url": "https://www.mizoor.com.br/", "creator": {"@type": "Person", "name": "Rafael Zigart", "url": "https://rafaelribeirozigart.github.io/zigart.com/"}, "dateCreated": "2019", "about": "App para conectar pessoas que querem praticar esportes coletivos e encontrar espaços públicos para jogar", "inLanguage": "pt-BR"}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Geist:wght@400;500&display=swap" rel="stylesheet">
+<script>(function(){var d=document.documentElement;d.classList.add('js');try{var n=sessionStorage.getItem('zc');if(n&&!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('is-entering');d.setAttribute('data-curtain',n);sessionStorage.removeItem('zc');setTimeout(function(){d.classList.remove('is-entering','is-revealing');},2500);}}catch(e){}})();</script>
+<script src="js/site.js" defer></script>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<header class="nav proof">
+    <div class="container">
+      <a class="wordmark" href="index.html" aria-label="Rafael Zigart, início">Rafael Zigart</a>
+      <div class="nav__right">
+        <nav aria-label="Principal">
+          <ul class="nav__links"><li><a href="carreira.html">Carreira</a></li><li><a href="blog/">Blog</a></li><li><a href="midia.html">Vídeos e podcasts</a></li></ul>
+        </nav>
+        <a class="btn crop" href="contato.html">Falar comigo</a>
+      </div>
+    </div>
+  </header>
+
+<main id="main">
+  <section class="page-hero proof" aria-labelledby="page-title">
+    <div class="container mz-hero">
+      <h1 id="page-title">Mizoor.</h1>
+      <p class="lead">Um app para quem quer praticar esporte, mas não tem com quem nem onde. Fundei com mais três sócios em 2019.</p>
+      <div class="actions">
+        <a class="btn btn--primary crop" href="https://www.mizoor.com.br/">Visitar mizoor.com.br</a>
+        <a class="link" href="carreira.html#c4">Ver na minha carreira</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--s" aria-labelledby="mz-problem">
+    <div class="container">
+      <div class="head"><h2 id="mz-problem">O problema é tempo e companhia.</h2></div>
+      <dl class="mz-figs">
+        <div><dt>69,8%</dt><dd>abandonam o esporte por falta de tempo ou outras prioridades</dd><dd class="mz-src">Ministério do Esporte, pesquisa de 2013</dd></div>
+        <div><dt>53%</dt><dd>dos brasileiros gostariam de praticar mais esportes</dd><dd class="mz-src">Ipsos, via CNN Brasil</dd></div>
+        <div><dt>US$ 2,1 bi</dt><dd>movimentados pelo mercado de atividade física no Brasil</dd><dd class="mz-src">VocêRH</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section band" aria-labelledby="mz-personas">
+    <div class="container">
+      <div class="head"><h2 id="mz-personas">Quatro pessoas que conhecemos bem.</h2><p class="mz-note">Saídas do mapa de empatia. O MVP mira as três primeiras.</p></div>
+      <ul class="mz-personas">
+        <li class="crop"><span class="mz-n">1</span><h3>Travoltinha do esporte</h3><p>Não sabe por onde começar.</p></li>
+        <li class="crop"><span class="mz-n">2</span><h3>Forever alone</h3><p>Quer praticar, mas não tem com quem.</p></li>
+        <li class="crop"><span class="mz-n">3</span><h3>Eterno promessinha</h3><p>Sempre vai começar na segunda.</p></li>
+        <li class="crop mz-off"><span class="mz-n">4</span><h3>Amante da endorfina</h3><p>Quer se mexer a toda hora, em todo lugar.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="mz-solution">
+    <div class="container mz-split">
+      <div class="mz-split__text">
+        <h2 id="mz-solution">Uma comunidade fora da academia.</h2>
+        <p class="lead">O app conecta quem quer se exercitar e mostra, num mapa atualizado pelos próprios usuários, as quadras, praças e praias onde dá para jogar.</p>
+        <p class="mz-note">O foco é pertencimento, não performance.</p>
+      </div>
+      <div class="mz-sides">
+        <div class="mz-side crop"><p class="mz-side__h">Para quem pratica</p><ul><li>Encontrar companhia no mesmo nível</li><li>Achar lugares para jogar perto de casa</li><li>Sair do digital para o encontro de verdade</li></ul></div>
+        <div class="mz-side crop"><p class="mz-side__h">Para patrocinadores</p><ul><li>Audiência esportiva qualificada</li><li>Iniciantes e intermediários</li><li>Dados usados de acordo com a LGPD</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--s band" aria-labelledby="mz-mvp">
+    <div class="container">
+      <div class="head"><h2 id="mz-mvp">O MVP, priorizado.</h2><p class="mz-note">Método MoSCoW. Escolha um grupo.</p></div>
+      <div class="mz-switch" data-switch-mz>
+        <div class="seg mz-tabs" role="tablist" aria-label="Prioridade">
+          <button type="button" role="tab" id="t-must" aria-controls="p-must" aria-selected="true">Deve ter</button>
+          <button type="button" role="tab" id="t-should" aria-controls="p-should" aria-selected="false" tabindex="-1">Deveria ter</button>
+          <button type="button" role="tab" id="t-could" aria-controls="p-could" aria-selected="false" tabindex="-1">Poderia ter</button>
+          <button type="button" role="tab" id="t-wont" aria-controls="p-wont" aria-selected="false" tabindex="-1">Por enquanto não</button>
+        </div>
+        <ul class="mz-list" role="tabpanel" id="p-must" aria-labelledby="t-must"><li>Cadastro, login e perfil</li><li>Comunidades e chat da atividade</li><li>Criar, listar e convidar para atividades, com histórico</li><li>Mapa de espaços e geolocalização</li><li>Pedido de cadastro de novo local</li><li>Notificações</li></ul>
+        <ul class="mz-list" role="tabpanel" id="p-should" aria-labelledby="t-should"><li>Filtro de busca</li><li>Avaliação de usuário e de atividade</li><li>Recomendações</li></ul>
+        <ul class="mz-list" role="tabpanel" id="p-could" aria-labelledby="t-could"><li>Ranking dos esportes mais praticados</li><li>Régua de evolução e progresso compartilhado</li><li>Personal trainer</li></ul>
+        <ul class="mz-list" role="tabpanel" id="p-wont" aria-labelledby="t-wont"><li>Gamificação</li><li>Marketplace</li><li>Encontrar amigos das redes sociais</li><li>Clube de benefícios</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="mz-proto">
+    <div class="container mz-split mz-split--r">
+      <figure class="mz-proto crop"><img src="images/mizoor-prototipo.png" width="576" height="242" alt="Quatro telas do protótipo do Mizoor: cadastro, escolha de esportes, início com categorias de atividade e notificações" loading="lazy"><figcaption>Protótipo no Figma: cadastro, esportes favoritos, início e convites.</figcaption></figure>
+      <div class="mz-split__text">
+        <h2 id="mz-proto">Do protótipo ao app.</h2>
+        <dl class="facts">
+          <dt>App</dt><dd>React Native, com versão web em React</dd>
+          <dt>Back-end</dt><dd>PHP e MySQL</dd>
+          <dt>Plano</dt><dd>5 meses, 10 sprints de Scrum</dd>
+        </dl>
+        <a class="link" href="https://www.figma.com/file/56lFESHmHbFbTNLoTcI6la/?node-id=0%3A1">Ver todas as telas no Figma</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--s" aria-labelledby="mz-plan">
+    <div class="container">
+      <div class="head"><h2 id="mz-plan">O plano para dois anos.</h2><p class="mz-note">Projeções do plano de negócio, começando por São Paulo. Metas, não resultados.</p></div>
+      <dl class="mz-figs mz-figs--4 fig--nums">
+        <div><dt>100 mil</dt><dd>usuários na meta do primeiro ano</dd></div>
+        <div><dt>220 mil</dt><dd>usuários projetados em dois anos</dd></div>
+        <div><dt>R$ 5,6 mi</dt><dd>de receita com cotas de patrocínio</dd></div>
+        <div><dt>1,45</dt><dd>anos para o break-even</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section band" aria-labelledby="mz-team">
+    <div class="container">
+      <div class="head"><h2 id="mz-team">Quatro sócios.</h2></div>
+      <ul class="mz-team">
+        <li><h3>Rafael Zigart</h3><p class="mz-role">Founder, CEO e CPO</p><p>Produto, P&amp;D e o time de desenvolvimento.</p></li>
+        <li><h3>Helio Matsuda</h3><p class="mz-role">COO</p><p>Operações, processos e fornecedores.</p></li>
+        <li><h3>Luana Paganini</h3><p class="mz-role">CCO</p><p>Vendas guiadas por dados.</p></li>
+        <li><h3>Fabio Takahashi</h3><p class="mz-role">CGO</p><p>Marketing digital e crescimento.</p></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="footer proof">
+  <div class="container">
+    <p class="footer__line">Quer conversar sobre produto e empreendedorismo? Fale comigo.</p>
+    <div class="footer__row">
+      <ul><li><a href="index.html">Início</a></li><li><a href="carreira.html">Carreira</a></li><li><a href="blog/">Blog</a></li><li><a href="midia.html">Vídeos e podcasts</a></li><li><a href="contato.html">Contato</a></li><li><a href="https://www.linkedin.com/in/rafael-zigart/">LinkedIn</a></li><li><a href="https://www.instagram.com/rafaelzigart/">Instagram</a></li></ul>
+      <p>© 2026 Rafael Zigart</p>
+    </div>
+  </div>
+</footer>
+<script>
+document.querySelectorAll('[data-switch-mz]').forEach((root) => {
+  const tabs = [...root.querySelectorAll('[role="tab"]')];
+  const pick = (t, focus) => { tabs.forEach((x) => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; }); if (focus) t.focus(); };
+  tabs.forEach((t, i) => { t.addEventListener('click', () => pick(t)); t.addEventListener('keydown', (e) => { const d = { ArrowRight: 1, ArrowLeft: -1 }[e.key]; if (d) { e.preventDefault(); pick(tabs[(i + d + tabs.length) % tabs.length], true); } }); });
+  pick(tabs[0]);
+});
+</script>
+</body>
+</html>
