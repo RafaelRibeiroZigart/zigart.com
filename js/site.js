@@ -200,7 +200,7 @@
   const d = document.documentElement;
 
   // Page transitions: a proof sheet carries the next page's name across the screen.
-  const names = { 'index.html': 'Início', '': 'Início', 'carreira.html': 'Carreira', 'midia.html': 'Vídeos e podcasts', 'contato.html': 'Contato' };
+  const names = { 'index.html': 'Início', '': 'Início', 'carreira.html': 'Carreira', 'midia.html': 'Vídeos e podcasts', 'contato.html': 'Contato', 'mizoor.html': 'Mizoor' };
   const nameFor = (a) => {
     if (a.dataset.curtain) return a.dataset.curtain;
     const u = new URL(a.href, location.href);
