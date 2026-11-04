@@ -21,7 +21,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Mizoor", "url": "https://www.mizoor.com.br/", "creator": {"@type": "Person", "name": "Rafael Zigart", "url": "https://rafaelribeirozigart.github.io/zigart.com/"}, "dateCreated": "2019", "about": "Plataforma que conecta pessoas para praticar esportes e reúne ferramentas para organizar atividades e gerir profissionais e centros esportivos", "inLanguage": "pt-BR"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Geist:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Geist:wght@400;500&family=Silkscreen&display=swap" rel="stylesheet">
 <script>(function(){var d=document.documentElement;d.classList.add('js');try{var n=sessionStorage.getItem('zc');if(n&&!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('is-entering');d.setAttribute('data-curtain',n);sessionStorage.removeItem('zc');setTimeout(function(){d.classList.remove('is-entering','is-revealing');},2500);}}catch(e){}})();</script>
 <script src="js/site.js" defer></script>
 <link rel="stylesheet" href="css/site.css">
@@ -43,6 +43,7 @@
 
 <main id="main">
   <section class="mzx-hero" aria-labelledby="page-title">
+    <canvas class="mzx-scene" aria-hidden="true"></canvas>
     <div class="container mzx-hero__grid">
       <div class="mzx-hero__text">
         <h1 id="page-title">Mizoor.</h1>
@@ -166,6 +167,44 @@
     steps.classList.add('is-armed');
     const io = new IntersectionObserver(([e]) => { if (!e.isIntersecting) return; io.disconnect(); [...steps.children].forEach((li, i) => setTimeout(() => li.classList.add('is-on'), 250 + i * 380)); }, { threshold: 0.5 });
     io.observe(steps);
+  }
+  // Pixel scene at the foot of the hero: layers of green, lime sparks, and a paper-coloured front edge that steps into the page.
+  const hero = document.querySelector('.mzx-hero'), cv = hero && hero.querySelector('.mzx-scene');
+  if (cv) {
+    const ctx = cv.getContext('2d'), S = 12, H = 168;
+    const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+    let seed = 7; const rnd = () => { seed ^= seed << 13; seed ^= seed >>> 17; seed ^= seed << 5; return ((seed >>> 0) % 10000) / 10000; };
+    let cols = [], w = 0, dpr = 1, raf = 0;
+    const layers = [['--mz-pix-1', 120, 3], ['--mz-pix-2', 84, 2], ['--mz-pix-3', 52, 2], ['--color-paper', 24, 1]];
+    const build = () => {
+      dpr = Math.min(2, devicePixelRatio || 1); w = hero.clientWidth; cv.width = w * dpr; cv.height = H * dpr; cv.style.height = H + 'px';
+      seed = 7; const n = Math.ceil(w / S) + 1;
+      cols = layers.map(([c, amp, step]) => { const out = []; let y = 0; for (let i = 0; i < n; i++) { if (i % step === 0 && rnd() < 0.6) y = Math.round((rnd() * amp) / S) * S; out.push({ y, lift: 0, spark: rnd() < 0.08 ? 1 + ((rnd() * 4) | 0) : 0 }); } return { c: css(c), out, amp }; });
+    };
+    const ptr = { x: -9999, at: 0 };
+    const draw = () => {
+      raf = 0; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, H);
+      const lime = css('--mz-lime'), now = performance.now(), near = now - ptr.at < 900;
+      let busy = false;
+      cols.forEach((L, li) => {
+        const base = H - 24 - li * 0;
+        L.out.forEach((col, i) => {
+          const x = i * S, target = near && li < 3 ? Math.max(0, 1 - Math.abs(x + S / 2 - ptr.x) / 90) * (3 - li) * S : 0;
+          col.lift += (target - col.lift) * 0.2; if (Math.abs(target - col.lift) > 0.5) busy = true;
+          const top = H - (li === 3 ? 0 : 24) - (L.amp - col.y) * (li === 3 ? 0.4 : 1) - Math.round(col.lift / S) * S - (li === 3 ? 0 : 20);
+          ctx.fillStyle = L.c; ctx.fillRect(x, Math.round(top / S) * S, S, H);
+          if (col.spark && li < 3) { ctx.fillStyle = lime; ctx.globalAlpha = 0.85; ctx.fillRect(x, Math.round(top / S) * S + S * (1 + col.spark), S / 2, S / 2); ctx.globalAlpha = 1; }
+        });
+      });
+      if (busy || near) raf = requestAnimationFrame(draw);
+    };
+    const kick = () => { if (!raf) raf = requestAnimationFrame(draw); };
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      hero.addEventListener('pointermove', (e) => { const r = hero.getBoundingClientRect(); ptr.x = e.clientX - r.left; ptr.at = performance.now(); kick(); });
+      hero.addEventListener('pointerdown', (e) => { const r = hero.getBoundingClientRect(); ptr.x = e.clientX - r.left; ptr.at = performance.now(); kick(); });
+    }
+    new ResizeObserver(() => { build(); kick(); }).observe(hero);
+    build(); kick();
   }
 })();
 </script>
