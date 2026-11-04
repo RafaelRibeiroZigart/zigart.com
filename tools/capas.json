@@ -4,31 +4,37 @@
     "date": "Outubro de 2026",
     "kicker": "Podcast cel_agents, episódio 1",
     "title": "O que muda quando a IA entra na construção de produtos.",
-    "size": 104,
-    "mark": "IA"
+    "size": 80,
+    "tilt": -3
   },
   {
     "slug": "programacao-desenvolvimento-infantil",
     "date": "Artigo no LinkedIn",
     "kicker": "Clube Binário, ONG Projeto Emanuel",
     "title": "O quanto a programação ajuda no desenvolvimento infantil?",
-    "size": 92
+    "size": 74,
+    "tilt": 2.5
   },
   {
     "slug": "og-site",
     "date": "Produto, IA e design",
     "kicker": "Head de AI Product na Celcoin",
     "title": "Rafael Zigart",
-    "size": 150,
-    "mark": "",
-    "section": "Site pessoal"
+    "size": 120,
+    "section": "Site pessoal",
+    "tilt": -2,
+    "image": "images/rafael-pixel.webp",
+    "imageWidth": 300
   },
   {
     "slug": "og-mizoor",
     "date": "Desde 2019",
     "kicker": "Fundado por Rafael Zigart",
     "title": "Mizoor: esporte com companhia.",
-    "size": 110,
-    "section": "Projeto"
+    "size": 72,
+    "section": "Projeto",
+    "tilt": 2,
+    "image": "images/mizoor-prototipo.png",
+    "imageWidth": 470
   }
 ]

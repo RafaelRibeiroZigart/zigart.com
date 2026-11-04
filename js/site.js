@@ -139,7 +139,7 @@
     const move = (e) => { pointer.x = e.clientX; pointer.y = e.clientY; pointer.at = performance.now(); };
     addEventListener('pointermove', move, { passive: true });
     addEventListener('pointerdown', move, { passive: true });
-    const STEP = 24, R = 150;
+    const STEP = 24, R = 110;
     document.querySelectorAll('.proof').forEach((host) => {
       const ambient = host.classList.contains('hero') || host.classList.contains('nav');
       const c = document.createElement('canvas');
@@ -171,10 +171,10 @@
               if (d < R) { k = 1 - d / R; const push = k * k * 9; dx += (ddx / (d || 1)) * push; dy += (ddy / (d || 1)) * push; rad += k * 1.8; }
             }
             if (k > 0.05) {
-              const sq = 4 + k * 12, h = ((x * 73856093) ^ (y * 19349663)) >>> 0;
-              ctx.globalAlpha = 0.35 + k * 0.65;
-              ctx.fillStyle = pal[h % pal.length];
-              ctx.fillRect(Math.round(x + dx - sq / 2), Math.round(y + dy - sq / 2), Math.round(sq), Math.round(sq));
+              const sq = Math.round(2 + k * 5), h = ((x * 73856093) ^ (y * 19349663)) >>> 0;
+              ctx.globalAlpha = 0.18 + k * 0.42;
+              ctx.fillStyle = pal[1 + (h % 3)];
+              ctx.fillRect(Math.round(x - sq / 2), Math.round(y - sq / 2), sq, sq);
             } else {
               ctx.globalAlpha = 0.2; ctx.fillStyle = ink;
               ctx.beginPath(); ctx.arc(x + dx, y + dy, rad, 0, 6.2832); ctx.fill();
