@@ -42,77 +42,72 @@
   </header>
 
 <main id="main">
-  <section class="page-hero proof" aria-labelledby="page-title">
-    <div class="container mz-hero">
-      <h1 id="page-title">Mizoor.</h1>
-      <p class="lead">Transforma a vontade de praticar esporte numa atividade com lugar, horário e pessoas.</p>
-      <div class="actions">
-        <a class="btn btn--primary crop" href="https://www.mizoor.com.br/">Abrir o Mizoor</a>
-        <a class="link" href="#produto">Ver as telas</a>
+  <section class="mzx-hero" aria-labelledby="page-title">
+    <div class="container mzx-hero__grid">
+      <div class="mzx-hero__text">
+        <h1 id="page-title">Mizoor.</h1>
+        <p class="lead">Fundei em 2019 para transformar a vontade de jogar numa atividade com lugar, horário e pessoas.</p>
+        <div class="actions">
+          <a class="btn mzx-btn crop" href="https://www.mizoor.com.br/">Abrir o Mizoor</a>
+          <a class="link mzx-link" href="#produto">Ver as telas</a>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section section--s" id="produto" aria-labelledby="mz-shots">
-    <div class="container">
-      <div class="head"><h2 id="mz-shots">O produto na prática.</h2><p class="mz-note">Telas do Mizoor em uso, em Botucatu.</p></div>
-      <figure class="shot shot--lead crop" data-kind="product"><img src="images/mizoor-home.webp" width="1268" height="701" alt="Página inicial do Mizoor: a chamada Encontre o esporte perfeito perto de você, sobre a foto aérea de uma quadra de saibro, com busca por esporte e cidade" fetchpriority="high"><figcaption>A página inicial: busca por esporte e cidade.</figcaption></figure>
-      <div class="shots">
-        <figure class="shot crop" data-kind="product"><img src="images/mizoor-explorar.webp" width="1264" height="822" alt="Tela Explorar do Mizoor com filtros de categoria, cidade, data e nível, e um mapa de Botucatu com o Parque Botucatu marcado como local gratuito" loading="lazy"><figcaption>Explorar: filtros e o mapa com locais públicos gratuitos.</figcaption></figure>
-        <figure class="shot crop" data-kind="product"><img src="images/mizoor-inicio.webp" width="1264" height="824" alt="Tela Início do atleta no Mizoor com o treino do dia, progresso semanal e a área Minhas Atividades" loading="lazy"><figcaption>Início do atleta: treino do dia e minhas atividades.</figcaption></figure>
-      </div>
+      <figure class="mzx-hero__shot" data-kind="product"><img src="images/mizoor-home.webp" width="1268" height="701" alt="Página inicial do Mizoor: Encontre o esporte perfeito perto de você, com busca por esporte e cidade sobre a foto aérea de uma quadra de saibro" fetchpriority="high"></figure>
     </div>
   </section>
 
   <section class="section section--s" aria-labelledby="mz-fronts">
     <div class="container">
       <div class="head"><h2 id="mz-fronts">Três frentes num lugar só.</h2><p class="mz-note">Não é só um catálogo de quadras, nem só uma rede social.</p></div>
-      <ul class="mz-personas mz-personas--3">
-        <li class="crop"><span class="mz-n">1</span><h3>Comunidade e organização</h3><p>Atividades, participantes, perfis, avaliações e conversas.</p></li>
-        <li class="crop"><span class="mz-n">2</span><h3>Descoberta e acesso</h3><p>Esportes, mapa, locais públicos, centros e profissionais.</p></li>
-        <li class="crop"><span class="mz-n">3</span><h3>Gestão</h3><p>Agenda, reservas, turmas, clientes e equipe para parceiros.</p></li>
+      <ul class="mzx-fronts">
+        <li><span class="mzx-fronts__n">01</span><h3>Comunidade e organização</h3><p>Atividades, participantes, perfis, avaliações e conversas.</p></li>
+        <li><span class="mzx-fronts__n">02</span><h3>Descoberta e acesso</h3><p>Esportes, mapa, locais públicos, centros e profissionais.</p></li>
+        <li><span class="mzx-fronts__n">03</span><h3>Gestão para parceiros</h3><p>Agenda, reservas, turmas, clientes, equipe e treinos.</p></li>
       </ul>
     </div>
   </section>
 
-  <section class="section band" aria-labelledby="mz-create">
+  <section class="section mzx-band" id="produto" aria-labelledby="mz-shots">
     <div class="container">
-      <div class="head"><h2 id="mz-create">Criar um jogo em cinco etapas.</h2><p class="mz-note">O assistente salva rascunho sozinho e mostra a prévia enquanto você preenche.</p></div>
-      <ol class="mz-steps">
-        <li><h3>Qual esporte?</h3><p>Futevôlei, beach tennis, padel, corrida e outros.</p></li>
-        <li><h3>Detalhes</h3><p>Nome, descrição e o que esperar do encontro.</p></li>
+      <div class="head"><h2 id="mz-shots">O produto na prática.</h2><p class="mz-note">Telas em uso, em Botucatu. Escolha uma.</p></div>
+      <div class="mzx-tour" data-tour>
+        <div class="mzx-tour__tabs" role="tablist" aria-label="Telas do Mizoor">
+          <button type="button" role="tab" id="tt-1" aria-controls="tp-1" aria-selected="true">Página inicial</button>
+          <button type="button" role="tab" id="tt-2" aria-controls="tp-2" aria-selected="false" tabindex="-1">Explorar</button>
+          <button type="button" role="tab" id="tt-3" aria-controls="tp-3" aria-selected="false" tabindex="-1">Início do atleta</button>
+        </div>
+        <div class="mzx-tour__stage">
+          <figure class="shot crop" role="tabpanel" id="tp-1" aria-labelledby="tt-1" data-kind="product"><img src="images/mizoor-home.webp" width="1268" height="701" alt="Página inicial do Mizoor com busca por esporte e cidade" loading="lazy"><figcaption>Busca por esporte e cidade, já na primeira tela.</figcaption></figure>
+          <figure class="shot crop" role="tabpanel" id="tp-2" aria-labelledby="tt-2" data-kind="product"><img src="images/mizoor-explorar.webp" width="1264" height="822" alt="Tela Explorar com filtros de categoria, cidade, data e nível, e o mapa de Botucatu com o Parque Botucatu marcado como gratuito" loading="lazy"><figcaption>Filtros, lista e mapa com locais públicos gratuitos.</figcaption></figure>
+          <figure class="shot crop" role="tabpanel" id="tp-3" aria-labelledby="tt-3" data-kind="product"><img src="images/mizoor-inicio.webp" width="1264" height="824" alt="Tela Início do atleta com o treino do dia, progresso semanal e Minhas Atividades" loading="lazy"><figcaption>Treino do dia, progresso semanal e minhas atividades.</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="mz-create">
+    <div class="container">
+      <div class="head"><h2 id="mz-create">Criar um jogo em cinco etapas.</h2><p class="mz-note">Com rascunho salvo sozinho e prévia enquanto você preenche.</p></div>
+      <ol class="mzx-steps" data-steps>
+        <li><h3>Qual esporte?</h3><p>Futevôlei, beach tennis, padel, corrida.</p></li>
+        <li><h3>Detalhes</h3><p>Nome e o que esperar do encontro.</p></li>
         <li><h3>Quando e onde</h3><p>Data, horário e local no mapa.</p></li>
-        <li><h3>Participantes</h3><p>Vagas, valor, aprovação e privacidade.</p></li>
-        <li><h3>Visual</h3><p>Uma imagem para o convite, se quiser.</p></li>
+        <li><h3>Participantes</h3><p>Vagas, valor e aprovação.</p></li>
+        <li><h3>Visual</h3><p>Uma imagem para o convite.</p></li>
       </ol>
-      <p class="mz-after">Depois é compartilhar por WhatsApp, email ou link, acompanhar quem vai e fazer check-in por QR code no dia.</p>
+      <p class="mz-after">Depois é compartilhar por WhatsApp, email ou link e fazer check-in por QR code no dia.</p>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="mz-who">
-    <div class="container">
-      <div class="head"><h2 id="mz-who">Para quem é.</h2></div>
-      <table class="table mz-table">
-        <thead><tr><th scope="col">Quem</th><th scope="col">O que faz no Mizoor</th></tr></thead>
-        <tbody>
-          <tr><td>Atleta</td><td>Descobre jogos perto de casa, entra em atividades e conversa com o grupo.</td></tr>
-          <tr><td>Organizador</td><td>Publica o encontro, aprova participantes e cuida do dia.</td></tr>
-          <tr><td>Profissional</td><td>Mostra credenciais, atende alunos e monta fichas de treino.</td></tr>
-          <tr><td>Centro esportivo</td><td>Divulga espaços e administra reservas, turmas e clientes.</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section class="section section--s band" aria-labelledby="mz-partners">
+  <section class="section section--s mzx-band" aria-labelledby="mz-partners">
     <div class="container mz-split">
       <div class="mz-split__text">
-        <h2 id="mz-partners">Uma área de gestão para parceiros.</h2>
-        <p class="lead">Profissionais e centros passam por verificação em níveis e ganham ferramentas para operar.</p>
+        <h2 id="mz-partners">Gestão para quem oferece o esporte.</h2>
+        <p class="lead">Profissionais e centros passam por verificação em níveis e ganham uma área própria para operar.</p>
       </div>
       <div class="mz-sides">
-        <div class="mz-side crop"><p class="mz-side__h">Operação</p><ul><li>Calendário, reservas e disponibilidade</li><li>Turmas e presença</li><li>Equipe com permissões</li></ul></div>
-        <div class="mz-side crop"><p class="mz-side__h">Relacionamento e treino</p><ul><li>CRM de clientes e alunos</li><li>Avaliações e fichas de treino</li><li>Indicadores de ocupação e conversão</li></ul></div>
+        <div class="mz-side crop"><p class="mz-side__h">Operação</p><ul><li>Calendário, reservas e disponibilidade</li><li>Turmas, presença e equipe</li></ul></div>
+        <div class="mz-side crop"><p class="mz-side__h">Clientes e treino</p><ul><li>CRM de clientes e alunos</li><li>Avaliações e fichas de treino</li></ul></div>
       </div>
     </div>
   </section>
@@ -120,48 +115,32 @@
   <section class="section" aria-labelledby="mz-prices">
     <div class="container">
       <div class="head"><h2 id="mz-prices">Grátis para quem joga.</h2><p class="mz-note">Planos da página de tarifas. Mensalidade para parceiros, sem comissão por reserva.</p></div>
-      <dl class="mz-figs mz-figs--4 mz-prices">
-        <div><dt>Grátis</dt><dd>Atletas</dd></div>
-        <div><dt>R$ 49</dt><dd>por mês, profissional Pro. O Básico é grátis.</dd></div>
-        <div><dt>R$ 99</dt><dd>por mês, centro esportivo Starter</dd></div>
-        <div><dt>R$ 199</dt><dd>por mês, centro esportivo Business</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <section class="section section--s band" aria-labelledby="mz-stack">
-    <div class="container mz-split">
-      <div class="mz-split__text">
-        <h2 id="mz-stack">Como é feito.</h2>
-        <p class="lead">Uma aplicação web com tempo real, mapas e áreas separadas para atleta, parceiro e administração.</p>
-      </div>
-      <ul class="chips mz-chips"><li>React 18</li><li>TypeScript</li><li>Vite</li><li>Supabase</li><li>Edge Functions</li><li>Tailwind CSS</li><li>shadcn/ui</li><li>MapLibre</li><li>React Query</li></ul>
-    </div>
-  </section>
-
-  <section class="section" id="comeco" aria-labelledby="mz-origin">
-    <div class="container">
-      <div class="head"><h2 id="mz-origin">Começou como plano de MBA.</h2><p class="mz-note">A ideia nasceu em 2019.</p></div>
-      <dl class="mz-figs">
-        <div><dt>69,8%</dt><dd>abandonam o esporte por falta de tempo</dd><dd class="mz-src">Ministério do Esporte, pesquisa de 2013</dd></div>
-        <div><dt>53%</dt><dd>dos brasileiros querem praticar mais</dd><dd class="mz-src">Ipsos, via CNN Brasil</dd></div>
-        <div><dt>US$ 2,1 bi</dt><dd>no mercado de atividade física</dd><dd class="mz-src">VocêRH</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <section class="section section--s band" aria-labelledby="mz-personas">
-    <div class="container">
-      <div class="head"><h2 id="mz-personas">As personas do primeiro MVP.</h2></div>
-      <ul class="mz-personas">
-        <li class="crop"><h3>Travoltinha do esporte</h3><p>Não sabe por onde começar.</p></li>
-        <li class="crop"><h3>Forever alone</h3><p>Quer praticar, mas não tem com quem.</p></li>
-        <li class="crop"><h3>Eterno promessinha</h3><p>Sempre vai começar na segunda.</p></li>
-        <li class="crop"><h3>Amante da endorfina</h3><p>Quer se mexer a toda hora, em todo lugar.</p></li>
+      <ul class="mzx-plans">
+        <li class="crop mzx-plans__free"><p class="mzx-plans__who">Atletas</p><p class="mzx-plans__price">Grátis</p><p>Descobrir, criar e participar.</p></li>
+        <li class="crop"><p class="mzx-plans__who">Profissionais</p><p class="mzx-plans__price">R$ 49<small>/mês</small></p><p>Plano Pro. O Básico é grátis.</p></li>
+        <li class="crop"><p class="mzx-plans__who">Centros esportivos</p><p class="mzx-plans__price">R$ 99<small>/mês</small></p><p>Starter. O Business custa R$ 199.</p></li>
       </ul>
     </div>
   </section>
 
+  <section class="section section--s mzx-band" id="comeco" aria-labelledby="mz-origin">
+    <div class="container">
+      <div class="head"><h2 id="mz-origin">Começou como plano de MBA.</h2><p class="mz-note">A ideia nasceu em 2019, de uma dor medida: tempo e companhia.</p></div>
+      <div class="mzx-origin">
+        <dl class="mzx-origin__figs">
+          <div><dt>69,8%</dt><dd>abandonam o esporte por falta de tempo <span>Ministério do Esporte, 2013</span></dd></div>
+          <div><dt>53%</dt><dd>dos brasileiros querem praticar mais <span>Ipsos, via CNN Brasil</span></dd></div>
+        </dl>
+        <ul class="mzx-origin__personas" aria-label="Personas do primeiro MVP">
+          <li><b>Travoltinha do esporte</b> não sabe por onde começar.</li>
+          <li><b>Forever alone</b> quer jogar, mas não tem com quem.</li>
+          <li><b>Eterno promessinha</b> sempre vai começar na segunda.</li>
+          <li><b>Amante da endorfina</b> quer se mexer a toda hora.</li>
+        </ul>
+      </div>
+      <p class="mzx-stack">Feito com React 18, TypeScript, Vite, Supabase, Tailwind CSS, shadcn/ui e MapLibre.</p>
+    </div>
+  </section>
 </main>
 
 <footer class="footer proof">
@@ -173,5 +152,22 @@
     </div>
   </div>
 </footer>
+<script>
+(() => {
+  const root = document.querySelector('[data-tour]');
+  if (root) {
+    const tabs = [...root.querySelectorAll('[role="tab"]')];
+    const pick = (t, focus) => { tabs.forEach((x) => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; }); if (focus) t.focus(); };
+    tabs.forEach((t, i) => { t.addEventListener('click', () => pick(t)); t.addEventListener('keydown', (e) => { const d = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key]; if (d) { e.preventDefault(); pick(tabs[(i + d + tabs.length) % tabs.length], true); } }); });
+    pick(tabs[0]);
+  }
+  const steps = document.querySelector('[data-steps]');
+  if (steps && 'IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    steps.classList.add('is-armed');
+    const io = new IntersectionObserver(([e]) => { if (!e.isIntersecting) return; io.disconnect(); [...steps.children].forEach((li, i) => setTimeout(() => li.classList.add('is-on'), 250 + i * 380)); }, { threshold: 0.5 });
+    io.observe(steps);
+  }
+})();
+</script>
 </body>
 </html>
