@@ -7,6 +7,7 @@
 /* Hallmark · dismissed 25 · .words__text is a one-sentence statement at section size, not running prose; 28ch keeps it to four lines */
 /* Hallmark · dismissed F7 · every printed piece is the same paper sheet by the Studio theme rule: one shadow, for paper objects only */
 /* Hallmark · dismissed 23 · the curtain accent is a 1px baseline rule drawn by a gradient sized 100% x 1px, not a fill */
+/* Hallmark · dismissed 59 · mizoor.html is a case page with two chapters, the product today and how it began, each with its own sections */
 @import url("./tokens.css");
 @import url("./base.css");
 
@@ -616,3 +617,21 @@ html.is-entering::after { content: attr(data-curtain); background: var(--pixel-1
 @media (max-width: 40rem) { .mz-figs, .mz-figs--4, .mz-personas, .mz-team, .mz-list { grid-template-columns: minmax(0, 1fr); } .mz-personas li { min-height: 0; } }
 @media (prefers-reduced-motion: reduce) { .mz-tabs button { transition: none; } }
 .mz-figs--4 dt { font-size: var(--text-display-s); white-space: nowrap; }
+
+/* Mizoor, the product today */
+.mz-personas--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.mz-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--gap-columns); margin: 0; padding: 0; list-style: none; counter-reset: mzs; border-top: var(--rule-hair) solid var(--color-ink); }
+.mz-steps li { counter-increment: mzs; display: grid; align-content: start; gap: var(--space-xs); padding-top: var(--space-lg); }
+.mz-steps li::before { content: counter(mzs); font: 400 var(--text-section)/1 var(--font-display); color: var(--color-accent); margin-bottom: var(--space-sm); }
+.mz-steps h3 { font-size: var(--text-title); }
+.mz-steps p { color: var(--color-ink-2); }
+.mz-after { margin-top: var(--space-2xl); max-width: 60ch; font: 400 var(--text-xl)/1.35 var(--font-display); color: var(--color-ink); }
+.mz-table td:first-child { width: 30%; }
+.mz-chips { grid-column: 7 / 13; gap: var(--space-sm); }
+.mz-chips li { font-size: var(--text-md); padding: var(--space-xs) var(--space-md); }
+.mz-prices dt { font-size: var(--text-display-s); }
+@media (max-width: 60rem) { .mz-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mz-personas--3 { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 40rem) { .mz-steps { grid-template-columns: minmax(0, 1fr); } }
+.mz-table td:last-child { white-space: normal; text-align: start; }
+.mz-table th:last-child { text-align: start; }
+.mz-prices dt { font-variant-numeric: tabular-nums; }

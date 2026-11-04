@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mizoor, um projeto de Rafael Zigart</title>
-<meta name="description" content="Mizoor, o app fundado por Rafael Zigart para conectar quem quer praticar esporte coletivo e encontrar lugares para jogar: problema, personas, MVP, protótipo e plano.">
+<meta name="description" content="Mizoor, plataforma fundada por Rafael Zigart que conecta pessoas para praticar esportes e reúne ferramentas para organizar atividades e gerir profissionais e centros esportivos.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://rafaelribeirozigart.github.io/zigart.com/mizoor.html">
 <meta name="author" content="Rafael Zigart">
@@ -12,13 +12,13 @@
 <meta property="og:site_name" content="Rafael Zigart">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Mizoor, um projeto de Rafael Zigart">
-<meta property="og:description" content="Mizoor, o app fundado por Rafael Zigart para conectar quem quer praticar esporte coletivo e encontrar lugares para jogar: problema, personas, MVP, protótipo e plano.">
+<meta property="og:description" content="Mizoor, plataforma fundada por Rafael Zigart que conecta pessoas para praticar esportes e reúne ferramentas para organizar atividades e gerir profissionais e centros esportivos.">
 <meta property="og:url" content="https://rafaelribeirozigart.github.io/zigart.com/mizoor.html">
 <meta property="og:image" content="https://rafaelribeirozigart.github.io/zigart.com/images/blog/og-mizoor.jpg">
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="900">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Mizoor", "url": "https://www.mizoor.com.br/", "creator": {"@type": "Person", "name": "Rafael Zigart", "url": "https://rafaelribeirozigart.github.io/zigart.com/"}, "dateCreated": "2019", "about": "App para conectar pessoas que querem praticar esportes coletivos e encontrar espaços públicos para jogar", "inLanguage": "pt-BR"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Mizoor", "url": "https://www.mizoor.com.br/", "creator": {"@type": "Person", "name": "Rafael Zigart", "url": "https://rafaelribeirozigart.github.io/zigart.com/"}, "dateCreated": "2019", "about": "Plataforma que conecta pessoas para praticar esportes e reúne ferramentas para organizar atividades e gerir profissionais e centros esportivos", "inLanguage": "pt-BR"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&family=Geist:wght@400;500&display=swap" rel="stylesheet">
@@ -45,97 +45,113 @@
   <section class="page-hero proof" aria-labelledby="page-title">
     <div class="container mz-hero">
       <h1 id="page-title">Mizoor.</h1>
-      <p class="lead">Um app para quem quer praticar esporte, mas não tem com quem nem onde. Fundei com mais três sócios em 2019.</p>
+      <p class="lead">Transforma a vontade de praticar esporte numa atividade com lugar, horário e pessoas.</p>
       <div class="actions">
-        <a class="btn btn--primary crop" href="https://www.mizoor.com.br/">Visitar mizoor.com.br</a>
-        <a class="link" href="carreira.html#c4">Ver na minha carreira</a>
+        <a class="btn btn--primary crop" href="https://www.mizoor.com.br/">Abrir o Mizoor</a>
+        <a class="link" href="#comeco">Como começou</a>
       </div>
     </div>
   </section>
 
-  <section class="section section--s" aria-labelledby="mz-problem">
+  <section class="section section--s" aria-labelledby="mz-fronts">
     <div class="container">
-      <div class="head"><h2 id="mz-problem">O problema é tempo e companhia.</h2></div>
-      <dl class="mz-figs">
-        <div><dt>69,8%</dt><dd>abandonam o esporte por falta de tempo ou outras prioridades</dd><dd class="mz-src">Ministério do Esporte, pesquisa de 2013</dd></div>
-        <div><dt>53%</dt><dd>dos brasileiros gostariam de praticar mais esportes</dd><dd class="mz-src">Ipsos, via CNN Brasil</dd></div>
-        <div><dt>US$ 2,1 bi</dt><dd>movimentados pelo mercado de atividade física no Brasil</dd><dd class="mz-src">VocêRH</dd></div>
-      </dl>
-    </div>
-  </section>
-
-  <section class="section band" aria-labelledby="mz-personas">
-    <div class="container">
-      <div class="head"><h2 id="mz-personas">Quatro pessoas que conhecemos bem.</h2><p class="mz-note">Saídas do mapa de empatia. O MVP mira as três primeiras.</p></div>
-      <ul class="mz-personas">
-        <li class="crop"><span class="mz-n">1</span><h3>Travoltinha do esporte</h3><p>Não sabe por onde começar.</p></li>
-        <li class="crop"><span class="mz-n">2</span><h3>Forever alone</h3><p>Quer praticar, mas não tem com quem.</p></li>
-        <li class="crop"><span class="mz-n">3</span><h3>Eterno promessinha</h3><p>Sempre vai começar na segunda.</p></li>
-        <li class="crop mz-off"><span class="mz-n">4</span><h3>Amante da endorfina</h3><p>Quer se mexer a toda hora, em todo lugar.</p></li>
+      <div class="head"><h2 id="mz-fronts">Três frentes num lugar só.</h2><p class="mz-note">Não é só um catálogo de quadras, nem só uma rede social.</p></div>
+      <ul class="mz-personas mz-personas--3">
+        <li class="crop"><span class="mz-n">1</span><h3>Comunidade e organização</h3><p>Atividades, participantes, perfis, avaliações e conversas.</p></li>
+        <li class="crop"><span class="mz-n">2</span><h3>Descoberta e acesso</h3><p>Esportes, mapa, locais públicos, centros e profissionais.</p></li>
+        <li class="crop"><span class="mz-n">3</span><h3>Gestão</h3><p>Agenda, reservas, turmas, clientes e equipe para parceiros.</p></li>
       </ul>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="mz-solution">
+  <section class="section band" aria-labelledby="mz-create">
+    <div class="container">
+      <div class="head"><h2 id="mz-create">Criar um jogo em cinco etapas.</h2><p class="mz-note">O assistente salva rascunho sozinho e mostra a prévia enquanto você preenche.</p></div>
+      <ol class="mz-steps">
+        <li><h3>Qual esporte?</h3><p>Futevôlei, beach tennis, padel, corrida e outros.</p></li>
+        <li><h3>Detalhes</h3><p>Nome, descrição e o que esperar do encontro.</p></li>
+        <li><h3>Quando e onde</h3><p>Data, horário e local no mapa.</p></li>
+        <li><h3>Participantes</h3><p>Vagas, valor, aprovação e privacidade.</p></li>
+        <li><h3>Visual</h3><p>Uma imagem para o convite, se quiser.</p></li>
+      </ol>
+      <p class="mz-after">Depois é compartilhar por WhatsApp, email ou link, acompanhar quem vai e fazer check-in por QR code no dia.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="mz-who">
+    <div class="container">
+      <div class="head"><h2 id="mz-who">Para quem é.</h2></div>
+      <table class="table mz-table">
+        <thead><tr><th scope="col">Quem</th><th scope="col">O que faz no Mizoor</th></tr></thead>
+        <tbody>
+          <tr><td>Atleta</td><td>Descobre jogos perto de casa, entra em atividades e conversa com o grupo.</td></tr>
+          <tr><td>Organizador</td><td>Publica o encontro, aprova participantes e cuida do dia.</td></tr>
+          <tr><td>Profissional</td><td>Mostra credenciais, atende alunos e monta fichas de treino.</td></tr>
+          <tr><td>Centro esportivo</td><td>Divulga espaços e administra reservas, turmas e clientes.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section section--s band" aria-labelledby="mz-partners">
     <div class="container mz-split">
       <div class="mz-split__text">
-        <h2 id="mz-solution">Uma comunidade fora da academia.</h2>
-        <p class="lead">O app conecta quem quer se exercitar e mostra, num mapa atualizado pelos próprios usuários, as quadras, praças e praias onde dá para jogar.</p>
-        <p class="mz-note">O foco é pertencimento, não performance.</p>
+        <h2 id="mz-partners">Uma área de gestão para parceiros.</h2>
+        <p class="lead">Profissionais e centros passam por verificação em níveis e ganham ferramentas para operar.</p>
       </div>
       <div class="mz-sides">
-        <div class="mz-side crop"><p class="mz-side__h">Para quem pratica</p><ul><li>Encontrar companhia no mesmo nível</li><li>Achar lugares para jogar perto de casa</li><li>Sair do digital para o encontro de verdade</li></ul></div>
-        <div class="mz-side crop"><p class="mz-side__h">Para patrocinadores</p><ul><li>Audiência esportiva qualificada</li><li>Iniciantes e intermediários</li><li>Dados usados de acordo com a LGPD</li></ul></div>
+        <div class="mz-side crop"><p class="mz-side__h">Operação</p><ul><li>Calendário, reservas e disponibilidade</li><li>Turmas e presença</li><li>Equipe com permissões</li></ul></div>
+        <div class="mz-side crop"><p class="mz-side__h">Relacionamento e treino</p><ul><li>CRM de clientes e alunos</li><li>Avaliações e fichas de treino</li><li>Indicadores de ocupação e conversão</li></ul></div>
       </div>
     </div>
   </section>
 
-  <section class="section section--s band" aria-labelledby="mz-mvp">
+  <section class="section" aria-labelledby="mz-prices">
     <div class="container">
-      <div class="head"><h2 id="mz-mvp">O MVP, priorizado.</h2><p class="mz-note">Método MoSCoW. Escolha um grupo.</p></div>
-      <div class="mz-switch" data-switch-mz>
-        <div class="seg mz-tabs" role="tablist" aria-label="Prioridade">
-          <button type="button" role="tab" id="t-must" aria-controls="p-must" aria-selected="true">Deve ter</button>
-          <button type="button" role="tab" id="t-should" aria-controls="p-should" aria-selected="false" tabindex="-1">Deveria ter</button>
-          <button type="button" role="tab" id="t-could" aria-controls="p-could" aria-selected="false" tabindex="-1">Poderia ter</button>
-          <button type="button" role="tab" id="t-wont" aria-controls="p-wont" aria-selected="false" tabindex="-1">Por enquanto não</button>
-        </div>
-        <ul class="mz-list" role="tabpanel" id="p-must" aria-labelledby="t-must"><li>Cadastro, login e perfil</li><li>Comunidades e chat da atividade</li><li>Criar, listar e convidar para atividades, com histórico</li><li>Mapa de espaços e geolocalização</li><li>Pedido de cadastro de novo local</li><li>Notificações</li></ul>
-        <ul class="mz-list" role="tabpanel" id="p-should" aria-labelledby="t-should"><li>Filtro de busca</li><li>Avaliação de usuário e de atividade</li><li>Recomendações</li></ul>
-        <ul class="mz-list" role="tabpanel" id="p-could" aria-labelledby="t-could"><li>Ranking dos esportes mais praticados</li><li>Régua de evolução e progresso compartilhado</li><li>Personal trainer</li></ul>
-        <ul class="mz-list" role="tabpanel" id="p-wont" aria-labelledby="t-wont"><li>Gamificação</li><li>Marketplace</li><li>Encontrar amigos das redes sociais</li><li>Clube de benefícios</li></ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="mz-proto">
-    <div class="container mz-split mz-split--r">
-      <figure class="mz-proto crop"><img src="images/mizoor-prototipo.png" width="576" height="242" alt="Quatro telas do protótipo do Mizoor: cadastro, escolha de esportes, início com categorias de atividade e notificações" loading="lazy"><figcaption>Protótipo no Figma: cadastro, esportes favoritos, início e convites.</figcaption></figure>
-      <div class="mz-split__text">
-        <h2 id="mz-proto">Do protótipo ao app.</h2>
-        <dl class="facts">
-          <dt>App</dt><dd>React Native, com versão web em React</dd>
-          <dt>Back-end</dt><dd>PHP e MySQL</dd>
-          <dt>Plano</dt><dd>5 meses, 10 sprints de Scrum</dd>
-        </dl>
-        <a class="link" href="https://www.figma.com/file/56lFESHmHbFbTNLoTcI6la/?node-id=0%3A1">Ver todas as telas no Figma</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--s" aria-labelledby="mz-plan">
-    <div class="container">
-      <div class="head"><h2 id="mz-plan">O plano para dois anos.</h2><p class="mz-note">Projeções do plano de negócio, começando por São Paulo. Metas, não resultados.</p></div>
-      <dl class="mz-figs mz-figs--4 fig--nums">
-        <div><dt>100 mil</dt><dd>usuários na meta do primeiro ano</dd></div>
-        <div><dt>220 mil</dt><dd>usuários projetados em dois anos</dd></div>
-        <div><dt>R$ 5,6 mi</dt><dd>de receita com cotas de patrocínio</dd></div>
-        <div><dt>1,45</dt><dd>anos para o break-even</dd></div>
+      <div class="head"><h2 id="mz-prices">Grátis para quem joga.</h2><p class="mz-note">Planos da página de tarifas. Mensalidade para parceiros, sem comissão por reserva.</p></div>
+      <dl class="mz-figs mz-figs--4 mz-prices">
+        <div><dt>Grátis</dt><dd>Atletas</dd></div>
+        <div><dt>R$ 49</dt><dd>por mês, profissional Pro. O Básico é grátis.</dd></div>
+        <div><dt>R$ 99</dt><dd>por mês, centro esportivo Starter</dd></div>
+        <div><dt>R$ 199</dt><dd>por mês, centro esportivo Business</dd></div>
       </dl>
     </div>
   </section>
 
-  <section class="section band" aria-labelledby="mz-team">
+  <section class="section section--s band" aria-labelledby="mz-stack">
+    <div class="container mz-split">
+      <div class="mz-split__text">
+        <h2 id="mz-stack">Como é feito.</h2>
+        <p class="lead">Uma aplicação web com tempo real, mapas e áreas separadas para atleta, parceiro e administração.</p>
+      </div>
+      <ul class="chips mz-chips"><li>React 18</li><li>TypeScript</li><li>Vite</li><li>Supabase</li><li>Edge Functions</li><li>Tailwind CSS</li><li>shadcn/ui</li><li>MapLibre</li><li>React Query</li></ul>
+    </div>
+  </section>
+
+  <section class="section" id="comeco" aria-labelledby="mz-origin">
+    <div class="container">
+      <div class="head"><h2 id="mz-origin">Começou como plano de MBA.</h2><p class="mz-note">Em 2019, com mais três sócios.</p></div>
+      <dl class="mz-figs">
+        <div><dt>69,8%</dt><dd>abandonam o esporte por falta de tempo</dd><dd class="mz-src">Ministério do Esporte, pesquisa de 2013</dd></div>
+        <div><dt>53%</dt><dd>dos brasileiros querem praticar mais</dd><dd class="mz-src">Ipsos, via CNN Brasil</dd></div>
+        <div><dt>US$ 2,1 bi</dt><dd>no mercado de atividade física</dd><dd class="mz-src">VocêRH</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section--s band" aria-labelledby="mz-personas">
+    <div class="container">
+      <div class="head"><h2 id="mz-personas">As personas do primeiro MVP.</h2></div>
+      <ul class="mz-personas">
+        <li class="crop"><h3>Travoltinha do esporte</h3><p>Não sabe por onde começar.</p></li>
+        <li class="crop"><h3>Forever alone</h3><p>Quer praticar, mas não tem com quem.</p></li>
+        <li class="crop"><h3>Eterno promessinha</h3><p>Sempre vai começar na segunda.</p></li>
+        <li class="crop"><h3>Amante da endorfina</h3><p>Quer se mexer a toda hora, em todo lugar.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="mz-team">
     <div class="container">
       <div class="head"><h2 id="mz-team">Quatro sócios.</h2></div>
       <ul class="mz-team">
@@ -157,13 +173,5 @@
     </div>
   </div>
 </footer>
-<script>
-document.querySelectorAll('[data-switch-mz]').forEach((root) => {
-  const tabs = [...root.querySelectorAll('[role="tab"]')];
-  const pick = (t, focus) => { tabs.forEach((x) => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; document.getElementById(x.getAttribute('aria-controls')).hidden = !on; }); if (focus) t.focus(); };
-  tabs.forEach((t, i) => { t.addEventListener('click', () => pick(t)); t.addEventListener('keydown', (e) => { const d = { ArrowRight: 1, ArrowLeft: -1 }[e.key]; if (d) { e.preventDefault(); pick(tabs[(i + d + tabs.length) % tabs.length], true); } }); });
-  pick(tabs[0]);
-});
-</script>
 </body>
 </html>
