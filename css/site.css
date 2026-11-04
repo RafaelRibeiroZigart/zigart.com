@@ -635,3 +635,10 @@ html.is-entering::after { content: attr(data-curtain); background: var(--pixel-1
 .mz-table td:last-child { white-space: normal; text-align: start; }
 .mz-table th:last-child { text-align: start; }
 .mz-prices dt { font-variant-numeric: tabular-nums; }
+
+/* Product screenshots */
+.shot { margin: 0; padding: var(--space-md); background: var(--color-paper-hi); border-radius: var(--radius-card); box-shadow: var(--shadow-sheet); --o: 14px; --l: 10px; }
+.shot img { display: block; width: 100%; height: auto; border-radius: 4px; outline: 1px solid color-mix(in oklab, var(--color-ink) 8%, transparent); outline-offset: -1px; }
+.shot figcaption { margin-top: var(--space-sm); font-size: var(--text-sm); font-weight: 500; color: var(--color-muted); }
+.shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap-columns); margin-top: var(--space-2xl); }
+@media (max-width: 40rem) { .shots { grid-template-columns: minmax(0, 1fr); } }
