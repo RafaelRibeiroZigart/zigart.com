@@ -271,3 +271,86 @@
     });
   }
 })();
+
+// The pixel portrait: the pixel half assembles, shimmers and scatters under the pointer.
+(() => {
+  const host = document.querySelector('[data-pixel]');
+  if (!host || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const img = host.querySelector('img');
+  const btn = document.querySelector('[data-pixel-toggle]');
+  // The source image, 1024 px: a 13.55 px pixel grid, and the diagonal split from x 572 at the top to x 454 at the foot.
+  const SRC = 1024, P = 13.55, PX = 6.3, PY = 2.2, TOP = 572, FOOT = 454;
+  const splitX = (y) => TOP + (FOOT - TOP) * (y / SRC);
+  const start = () => {
+    const off = document.createElement('canvas'); off.width = SRC; off.height = SRC;
+    const octx = off.getContext('2d', { willReadFrequently: true });
+    try { octx.drawImage(img, 0, 0, SRC, SRC); octx.getImageData(0, 0, 1, 1); } catch (e) { return; }
+    const data = octx.getImageData(0, 0, SRC, SRC).data;
+    const cells = [];
+    for (let y = PY - P; y < SRC; y += P) {
+      for (let x = PX - P; x < SRC; x += P) {
+        const cx = Math.min(SRC - 1, Math.max(0, Math.round(x + P / 2))), cy = Math.min(SRC - 1, Math.max(0, Math.round(y + P / 2)));
+        if (x + P < splitX(y + P / 2) - 2) continue;
+        const i = (cy * SRC + cx) * 4, r = data[i], g = data[i + 1], b = data[i + 2];
+        const blue = b > 140 && b > r + 40;
+        cells.push({ x, y, r, g, b, blue, ph: Math.random() * 6.283, sp: 0.4 + Math.random() * 1.2, sx: (Math.random() - 0.5) * 220, sy: (Math.random() - 0.5) * 220, d: 0 });
+      }
+    }
+    cells.forEach((c) => { c.d = Math.abs(c.x - splitX(c.y)) / SRC; });
+    const blues = cells.filter((c) => c.blue);
+    cells.forEach((c) => { if (c.blue) { const o = blues[(Math.random() * blues.length) | 0]; c.ar = o.r; c.ag = o.g; c.ab = o.b; } });
+
+    const cv = document.createElement('canvas'); cv.setAttribute('aria-hidden', 'true');
+    host.append(cv);
+    const ctx = cv.getContext('2d');
+    let w = 0, s = 1, dpr = 1, seen = false, held = false, raf = 0, t0 = 0, born = 0;
+    const ptr = { x: -9999, y: -9999, at: 0 };
+    const size = () => { dpr = Math.min(2, devicePixelRatio || 1); w = host.clientWidth; s = w / SRC; cv.width = cv.height = Math.round(w * dpr); };
+    const ease = (k) => 1 - Math.pow(1 - k, 4);
+    const draw = (now) => {
+      raf = 0;
+      if (!seen) return;
+      if (!born) born = now;
+      const t = (now - born) / 1000;
+      ctx.setTransform(dpr * s, 0, 0, dpr * s, 0, 0);
+      ctx.clearRect(0, 0, SRC, SRC);
+      ctx.save(); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(TOP, 0); ctx.lineTo(FOOT, SRC); ctx.lineTo(0, SRC); ctx.closePath(); ctx.clip();
+      ctx.drawImage(img, 0, 0, SRC, SRC); ctx.restore();
+      ctx.save(); ctx.beginPath(); ctx.moveTo(TOP, 0); ctx.lineTo(SRC, 0); ctx.lineTo(SRC, SRC); ctx.lineTo(FOOT, SRC); ctx.closePath(); ctx.clip();
+      const near = now - ptr.at < 1500;
+      const R = 120 / s;
+      let busy = false;
+      for (const c of cells) {
+        const k = Math.min(1, Math.max(0, (t - c.d * 1.4) / 0.9));
+        const e = ease(k);
+        if (k < 1) busy = true;
+        let dx = c.sx * (1 - e), dy = c.sy * (1 - e), lift = 0;
+        if (near) {
+          const mx = c.x + P / 2 - ptr.x, my = c.y + P / 2 - ptr.y, dd = Math.hypot(mx, my);
+          if (dd < R) { const q = 1 - dd / R; lift = q; dx += (mx / (dd || 1)) * q * q * 26; dy += (my / (dd || 1)) * q * q * 26; }
+        }
+        let r = c.r, g = c.g, b = c.b;
+        if (c.blue && !held) {
+          const m = Math.pow(Math.max(0, Math.sin(t * c.sp + c.ph)), 6) * 0.9;
+          r += (c.ar - r) * m; g += (c.ag - g) * m; b += (c.ab - b) * m;
+        }
+        if (lift) { r += (255 - r) * lift * 0.35; g += (255 - g) * lift * 0.35; b += (255 - b) * lift * 0.2; }
+        ctx.globalAlpha = 0.25 + 0.75 * e;
+        ctx.fillStyle = 'rgb(' + (r | 0) + ',' + (g | 0) + ',' + (b | 0) + ')';
+        const pad = lift * 3;
+        ctx.fillRect(c.x + dx - pad / 2 - 0.75, c.y + dy - pad / 2 - 0.75, P + 1.5 + pad, P + 1.5 + pad);
+      }
+      ctx.restore(); ctx.globalAlpha = 1;
+      if (busy || near || !held) raf = requestAnimationFrame(draw);
+    };
+    const kick = () => { if (!raf && seen) raf = requestAnimationFrame(draw); };
+    const move = (e) => { const r = cv.getBoundingClientRect(); ptr.x = (e.clientX - r.left) / s; ptr.y = (e.clientY - r.top) / s; ptr.at = performance.now(); kick(); };
+    cv.addEventListener('pointermove', move); cv.addEventListener('pointerdown', move);
+    cv.addEventListener('pointerleave', () => { ptr.at = 0; });
+    if (btn) btn.addEventListener('click', () => { held = !held; btn.textContent = held ? 'Animar' : 'Pausar'; kick(); });
+    new ResizeObserver(() => { size(); kick(); }).observe(host);
+    new IntersectionObserver(([e]) => { seen = e.isIntersecting; kick(); }, { threshold: 0.15 }).observe(host);
+    size(); host.classList.add('is-live');
+  };
+  if (img.complete && img.naturalWidth) start(); else img.addEventListener('load', start, { once: true });
+})();

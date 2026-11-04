@@ -1,4 +1,4 @@
-/* Hallmark · shape: Long Document, swapped to an index that opens (a hire page needs its action in view, not inside prose) · genre: editorial · theme: Studio (by request) · job: hire · draw: de8ef2
+/* Hallmark · shape: Long Document, swapped to an index that opens (a hire page needs its action in view, not inside prose) · genre: editorial · theme: Studio (by request), accent blue by request · job: hire · draw: de8ef2
  * hero: Ledge (swapped from Banner: the user asked for the Studio look, its wordmark construction) · nav: edge-aligned, the wordmark, two links and the printed action, no rule (swapped from search-led: one page has nothing to search) · footer: statement, one line from his own profile over the links · imagery: one photograph, the user's own, natural, crop-marked in the about split · signature: the name under construction, Hedvig set huge on its real metrics (ascender 800, cap 700, x-height 520, descender -257)
  * axes: light/roman-serif/cool · posture: restrained · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: S, a head about twelve years fits other careers; the name drawn on its own font metrics and the Shell Box case opened in place carry the specificity */
@@ -544,3 +544,18 @@ html.is-entering body { overflow: hidden; }
 .video a { gap: var(--space-xs); }
 .chapter__video { justify-self: start; }
 @media (max-width: 60rem) { .episodes--full .ep { grid-template-columns: minmax(0, 1fr); } }
+
+/* The portrait: the pixel half lives on a canvas over the photograph */
+.photo--square { aspect-ratio: 1 / 1; }
+.photo--square > canvas { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: var(--radius-card); z-index: 1; }
+.photo--square.is-live > img { visibility: hidden; }
+.photo--square { position: relative; }
+.photo--square > canvas { cursor: crosshair; touch-action: pan-y; }
+.redline { display: flex; justify-content: center; align-items: center; gap: var(--space-md); }
+.pixel-toggle { min-height: 44px; padding: 0 var(--space-xs); border: 0; background: none; color: var(--color-ink-2); font: 500 var(--text-xs)/1 var(--font-body); text-decoration: underline var(--rule-hair); text-underline-offset: 0.3em; cursor: pointer; }
+.pixel-toggle:hover { color: var(--color-ink); text-decoration-color: var(--color-accent); }
+.pixel-toggle:active { transform: translateY(1px); }
+.pixel-toggle:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.pixel-toggle:disabled { opacity: 0.55; cursor: not-allowed; }
+html:not(.js) .pixel-toggle { display: none; }
+@media (prefers-reduced-motion: reduce) { .pixel-toggle { display: none; } }
